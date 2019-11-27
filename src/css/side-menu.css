@@ -126,9 +126,11 @@ appears on the left side of the page.
     /*
     This styles the selected menu item `<li>`.
     */
-    #menu .pure-menu-selected,
+    #menu .pure-menu-selected {
+        background: #d61f1f;
+    }
     #menu .pure-menu-heading {
-        background: #1f8dd6;
+        background: #8f1616;
     }
         /*
         This styles a link within a selected menu item `<li>`.
