@@ -27,12 +27,28 @@
    padding: 0;
    margin-top: 0;
 }
+.content {
+    width: 100%;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
 ul{
     padding-inline-start: 0px;
 }
 .titleSession{
     color: white;
     width: 100%;
+}
+.listaTipos{
+    align-self: center;
+}
+#tipoTodos{
+    border-bottom: 1px solid #ffffff;
 }
 .tipos{
     display: inline-block;

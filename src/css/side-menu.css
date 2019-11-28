@@ -38,20 +38,6 @@ This is the parent `<div>` that contains the menu and the content area.
 /*
 The content `<div>` is where all your content goes.
 */
-.content {
-    margin: 0 auto;
-    padding: 0 2em;
-    max-width: 800px;
-    margin-bottom: 50px;
-    line-height: 1.6em;
-}
-
-
-.content-subhead {
-    margin: 50px 0 20px 0;
-    font-weight: 300;
-    color: #888;
-}
 
 
 
@@ -192,11 +178,11 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 */
 @media (min-width: 48em) {
 
-    .header,
-    .content {
+    
+    /*.content {
         padding-left: 2em;
         padding-right: 2em;
-    }
+    }*/
 
     #layout {
         padding-left: 150px; /* left col width "#menu" */

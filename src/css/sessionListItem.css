@@ -1,0 +1,21 @@
+#item{
+    display: block;
+    width: 96%;
+    height: auto;
+    margin: 0.8% 2%;
+    margin-bottom: 1.5%;
+    border: 1px solid #000000;
+    border-left: 7px solid deepskyblue;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+.titulo{
+    color: rgb(65, 65, 65);
+    font-weight: bold;
+    margin: 2px;
+    padding-left: 7px;
+}
+.horarioLocal{
+    margin: 2px;
+    padding-left: 7px;
+}

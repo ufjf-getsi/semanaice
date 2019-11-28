@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SessionListItem from './sessionListItem';
 import '../css/sessionList.css';
 
 class sessionList extends Component{
@@ -26,7 +27,11 @@ class sessionList extends Component{
                 </div>
 
                 <div className="content">
-                    
+                    <SessionListItem/>
+                    <SessionListItem/>
+                    <SessionListItem/>
+                    <SessionListItem/>
+                    <SessionListItem/>
                 </div>
             </div>
         );
