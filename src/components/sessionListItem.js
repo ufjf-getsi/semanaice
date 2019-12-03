@@ -3,11 +3,12 @@ import '../css/sessionListItem.css';
 
 class sessionListItem extends Component{
 
+
     render(){
         return (
-            <div id="item">
-                <p className="titulo">Curso React</p>
-                <p className="horarioLocal">8:00 pm - 9 pm: SL105</p>
+            <div id="item" key={this.props.id}>
+                <p className="titulo">{this.props.nome}</p>
+                <p className="horarioLocal">{this.props.dataInicio} - {this.props.dataFinal}: {this.props.local}</p>
             </div>
         );
     }
