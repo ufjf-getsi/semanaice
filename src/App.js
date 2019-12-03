@@ -7,10 +7,6 @@ import PalestranteList from './components/palestrantelist';
 
 class App extends Component {
 
-  constructor(){
-    super();
-    this.state = {sessions : []}
-  }
 
   /*componentDidMount () {
     const script = document.createElement("script");

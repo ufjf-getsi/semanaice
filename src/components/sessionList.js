@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import Session from '../data/sessions';
 import SessionListItem from './sessionListItem';
 import '../css/sessionList.css';
 
 class sessionList extends Component{
+
+    constructor(){
+        super();
+        this.state = {sessions : Session};
+    
+        
+    }
 
     selecionaTipo(evento){
         console.log(evento.target.id);
@@ -27,11 +35,11 @@ class sessionList extends Component{
                 </div>
 
                 <div className="content">
-                    <SessionListItem/>
-                    <SessionListItem/>
-                    <SessionListItem/>
-                    <SessionListItem/>
-                    <SessionListItem/>
+                    {this.state.sessions.map(function(item){
+                        return (
+                            <SessionListItem key={item.id} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location}/>
+                        );
+                    })}
                 </div>
             </div>
         );
