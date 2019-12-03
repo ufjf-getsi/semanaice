@@ -3,6 +3,7 @@ import SessionList from './components/sessionList';
 import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
+import PalestranteList from './components/palestrantelist';
 
 class App extends Component {
 
@@ -43,7 +44,7 @@ class App extends Component {
         </div>
 
         <div id="main">
-          <SessionList/>
+          <PalestranteList/>
         </div>
       </div>
       
