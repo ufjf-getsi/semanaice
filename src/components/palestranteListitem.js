@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../css/palestrante.css';
+import '../css/palestranteListitem.css';
 
-class palestrante extends Component{
+class palestranteListitem extends Component{
 
     render(){
         return (
@@ -14,4 +14,4 @@ class palestrante extends Component{
     }
 }
 
-export default palestrante;
+export default palestranteListitem;

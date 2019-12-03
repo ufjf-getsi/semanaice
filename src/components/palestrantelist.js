@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Palestrante from './palestrante';
+import PalestranteListitem from './palestranteListitem';
 import '../css/palestranteList.css';
 
 class palestranteList extends Component{
@@ -12,11 +12,14 @@ render(){
             </div>
 
             <div className="content">
-                <Palestrante/>
-                <Palestrante/>
-                <Palestrante/>
-                <Palestrante/>
-                <Palestrante/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
+                <PalestranteListitem/>
             </div>
         </div>
     );
