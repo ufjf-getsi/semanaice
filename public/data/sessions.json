@@ -247,7 +247,7 @@
     "location": "S210",
     "description": "Arquitetura SaaS e sua influência na escalabilidade do modelo de negócio das maiores empresas - da iClips à Netflix",
     "speakerIds": [24],
-    "tracks": ["Semana da Computação"]
+    "tracks": ["Semana do ICE"]
   },
   {
     "id": 26,
@@ -257,6 +257,6 @@
     "location": "S210",
     "description": "Arquitetura de microsserviços e como integrar diversas aplicações de forma eficiente para construir a melhor solução.",
     "speakerIds": [25],
-    "tracks": ["Semana da Computação"]
+    "tracks": ["Semana da Arquitetura"]
   }
 ]
