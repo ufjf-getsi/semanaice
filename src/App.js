@@ -4,6 +4,8 @@ import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import PalestranteList from './components/palestrantelist';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import sessionList from './components/sessionList';
 
 class App extends Component {
 
@@ -43,9 +45,13 @@ class App extends Component {
           </div>
         </div>
 
-        <div id="main">
-          <PalestranteList/>
-        </div>
+        <Router>
+          <div id="main">
+            
+            <Route path="/atividades" component={sessionList} />
+            <Route path="/palestrantes" component={PalestranteList} />
+          </div>
+        </Router>
       </div>
       
     );

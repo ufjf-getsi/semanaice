@@ -1,4 +1,4 @@
-#item{
+#item-PalestranteItem{
     display:inline-block;
     width: 100%;
     height: auto;
@@ -9,17 +9,17 @@
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
-.nome{
+.nome-PalestranteItem{
     color: rgb(65, 65, 65);
     font-weight: bold;
     margin: 2px;
     padding-left: 7px;
 }
-.descricao{
+.descricao-PalestranteItem{
     margin: 2px;
     padding-left: 7px;
 }
-.contato{
+.contato-PalestranteItem{
     margin: 2px;
     padding-left: 7px;
 }

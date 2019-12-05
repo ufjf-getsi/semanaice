@@ -6,12 +6,12 @@ class palestranteList extends Component{
 
 render(){
     return (
-        <div id="sessionList">
-            <div className="header">
-                <h1 className="titleSession">Palestrantes</h1>
+        <div id="list-Palestrante">
+            <div className="header-Palestrante">
+                <h1 className="title-Palestrante">Palestrantes</h1>
             </div>
 
-            <div className="content">
+            <div className="content-Palestrante">
                 <PalestranteListitem/>
                 <PalestranteListitem/>
                 <PalestranteListitem/>

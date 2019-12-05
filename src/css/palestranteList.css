@@ -1,6 +1,6 @@
 
 
-.header {
+.header-Palestrante {
     display: table;
     height: auto;
     width: 100%;
@@ -14,7 +14,7 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header h1 {
+.header-Palestrante h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -23,19 +23,19 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.header h2 {
+.header-Palestrante h2 {
    font-weight: 300;
    color: #ccc;
    padding: 0;
    margin-top: 0;
 }
 @media (min-width: 700px) {
-    .content {
+    .content-Palestrante {
        display: flex;
        align-items: center;
      }
    }
-.content {
+.content-Palestrante {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     grid-gap: 30px;
@@ -43,7 +43,7 @@
     margin-bottom: 50px;
     line-height: 1.6em;
 }
-.content-subhead {
+.content-Palestrante-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #888;
@@ -51,7 +51,7 @@
 ul{
     padding-inline-start: 0px;
 }
-.titleSession{
+.title-Palestrante{
     color: white;
     width: 100%;
 }

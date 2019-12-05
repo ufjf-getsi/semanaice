@@ -1,4 +1,4 @@
-.header {
+.header-Session {
     display: block;
     height: auto;
     width: 100%;
@@ -12,7 +12,7 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header h1 {
+.header-Session h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -21,18 +21,18 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.header h2 {
+.header-Session h2 {
    font-weight: 300;
    color: #ccc;
    padding: 0;
    margin-top: 0;
 }
-.content {
+.content-Session {
     width: 100%;
     margin-bottom: 50px;
     line-height: 1.6em;
 }
-.content-subhead {
+.content-Session-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #888;
@@ -40,17 +40,17 @@
 ul{
     padding-inline-start: 0px;
 }
-.titleSession{
+.title-Session{
     color: white;
     width: 100%;
 }
-.listaTipos{
+.listaTipos-Session{
     align-self: center;
 }
-#tipoTodos{
+#tipoTodos-Session{
     border-bottom: 1px solid #ffffff;
 }
-.tipos{
+.tipos-Session{
     display: inline-block;
     color: white;
     text-align: center;
@@ -58,6 +58,6 @@ ul{
     width: 50%;
     border-bottom: 1px solid #8f1616;
 }
-.tipos:hover{
+.tipos-Session:hover{
     cursor: pointer;
 }

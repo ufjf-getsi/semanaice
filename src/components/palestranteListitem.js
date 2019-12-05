@@ -5,10 +5,10 @@ class palestranteListitem extends Component{
 
     render(){
         return (
-            <div id="item">
-                <p className="nome">Palestrante Nome</p>
-                <p className="descricao">Descrição</p>
-                <p className="contato"> Contato </p>
+            <div id="item-PalestranteItem">
+                <p className="nome-PalestranteItem">Palestrante Nome</p>
+                <p className="descricao-PalestranteItem">Descrição</p>
+                <p className="contato-PalestranteItem"> Contato </p>
             </div>
         );
     }

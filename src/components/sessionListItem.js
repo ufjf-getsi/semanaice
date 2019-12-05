@@ -6,9 +6,9 @@ class sessionListItem extends Component{
 
     render(){
         return (
-            <div id="item" key={this.props.id}>
-                <p className="titulo">{this.props.nome}</p>
-                <p className="horarioLocal">{this.props.dataInicio} - {this.props.dataFinal}: {this.props.local}</p>
+            <div id="item-SessionItem" key={this.props.id}>
+                <p className="titulo-SessionItem">{this.props.nome}</p>
+                <p className="horarioLocal-SessionItem">{this.props.dataInicio} - {this.props.dataFinal}: {this.props.local}</p>
             </div>
         );
     }
