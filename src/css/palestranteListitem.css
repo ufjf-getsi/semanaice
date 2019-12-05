@@ -1,9 +1,7 @@
 #item-PalestranteItem{
     display:inline-block;
-    width: 100%;
+    width: 98%;
     height: auto;
-    margin: 0.8% 2%;
-    margin-bottom: 1.5%;
     border: 1px solid #000000;
     border-left: 7px solid deepskyblue;
     border-radius: 5px;
