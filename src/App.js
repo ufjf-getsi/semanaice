@@ -4,7 +4,7 @@ import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import PalestranteList from './components/palestrantelist';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import sessionList from './components/sessionList';
 
 class App extends Component {
@@ -21,6 +21,8 @@ class App extends Component {
 
   render() {
     return (
+
+      <Router>
       <div id="layout">
 
         <a href="#menu" id="menuLink" className="menu-link">
@@ -33,8 +35,8 @@ class App extends Component {
             <a className="pure-menu-heading" href="#">Menu</a>
 
             <ul className="pure-menu-list">
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Atividades</a></li>
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Palestrantes</a></li>
+              <li className="pure-menu-item"><Link to="/atividades" className="pure-menu-link">Atividades</Link></li>
+              <li className="pure-menu-item"><Link to="/palestrantes" className="pure-menu-link">Palestrantes</Link></li>
 
               <li className="pure-menu-item menu-item-divided pure-menu-selected">
                 <a href="#" className="pure-menu-link">Mapa</a>
@@ -45,14 +47,17 @@ class App extends Component {
           </div>
         </div>
 
-        <Router>
+        
           <div id="main">
-            
-            <Route path="/atividades" component={sessionList} />
-            <Route path="/palestrantes" component={PalestranteList} />
+            <Switch>
+              <Route path="/" exact component={sessionList} />
+              <Route path="/atividades" component={sessionList} />
+              <Route path="/palestrantes" component={PalestranteList} />
+            </Switch>
           </div>
-        </Router>
+        
       </div>
+      </Router>
       
     );
   }
