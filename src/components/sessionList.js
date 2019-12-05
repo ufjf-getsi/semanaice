@@ -13,8 +13,7 @@ class sessionList extends Component{
     }
 
     selecionaTipo(evento){
-        console.log(evento.target.id);
-        if(evento.target.id == "tipoTodos-Session"){
+        if(evento.target.id === "tipoTodos-Session"){
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Session").style.borderBottom = "1px solid #8f1616";
         } else {
