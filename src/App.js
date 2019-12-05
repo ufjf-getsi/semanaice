@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SessionList from './components/sessionList';
 import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
@@ -8,6 +7,19 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import sessionList from './components/sessionList';
 
 class App extends Component {
+
+  /*componentDidMount () {
+    if(window.location.pathname === "/" || window.location.pathname === "/atividades") {
+      this.mudaPagina(document.getElementById("itemAtividades"));
+    } else if(window.location.pathname === "/palestrantes") {
+      console.log(true);
+      this.mudaPagina(document.getElementById("itemPalestrantes"));
+    } else if(window.location.pathname === "/mapa") {
+      this.mudaPagina(document.getElementById("itemMapa"));
+    } else if(window.location.pathname === "/sobre") {
+      this.mudaPagina(document.getElementById("itemSobre"));
+    }
+  }*/
 
 
   /*componentDidMount () {
@@ -18,6 +30,31 @@ class App extends Component {
 
     document.body.appendChild(script);
   }*/
+
+  mudaPagina(evento){
+    console.log(evento);
+    if(evento.target.id === "itemAtividades"){
+      document.getElementById(evento.target.id).style.background = "#d61f1f";
+      document.getElementById("itemPalestrantes").style.background = "#191818";
+      document.getElementById("itemMapa").style.background = "#191818";
+      document.getElementById("itemSobre").style.background = "#191818";
+    } else if(evento.target.id === "itemPalestrantes"){
+      document.getElementById(evento.target.id).style.background = "#d61f1f";
+      document.getElementById("itemAtividades").style.background = "#191818";
+      document.getElementById("itemMapa").style.background = "#191818";
+      document.getElementById("itemSobre").style.background = "#191818";
+    } else if(evento.target.id === "itemMapa") {
+      document.getElementById(evento.target.id).style.background = "#d61f1f";
+      document.getElementById("itemAtividades").style.background = "#191818";
+      document.getElementById("itemPalestrantes").style.background = "#191818";
+      document.getElementById("itemSobre").style.background = "#191818";
+    } else if(evento.target.id === "itemSobre") {
+      document.getElementById(evento.target.id).style.background = "#d61f1f";
+      document.getElementById("itemAtividades").style.background = "#191818";
+      document.getElementById("itemPalestrantes").style.background = "#191818";
+      document.getElementById("itemMapa").style.background = "#191818";
+    }
+  }
 
   render() {
     return (
@@ -32,17 +69,15 @@ class App extends Component {
 
         <div id="menu">
           <div className="pure-menu">
-            <a className="pure-menu-heading" href="#">Menu</a>
+            <a className="pure-menu-heading">Menu</a>
 
             <ul className="pure-menu-list">
-              <li className="pure-menu-item"><Link to="/atividades" className="pure-menu-link">Atividades</Link></li>
-              <li className="pure-menu-item"><Link to="/palestrantes" className="pure-menu-link">Palestrantes</Link></li>
+              <li className="pure-menu-item" ><Link to="/atividades" className="pure-menu-link" id="itemAtividades" onClick={this.mudaPagina} >Atividades</Link></li>
+              <li className="pure-menu-item" ><Link to="/palestrantes" className="pure-menu-link" id="itemPalestrantes" onClick={this.mudaPagina} >Palestrantes</Link></li>
 
-              <li className="pure-menu-item menu-item-divided pure-menu-selected">
-                <a href="#" className="pure-menu-link">Mapa</a>
-              </li>
+              <li className="pure-menu-item" ><Link to="/mapa" className="pure-menu-link" id="itemMapa" onClick={this.mudaPagina} >Mapa</Link></li>
 
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Sobre</a></li>
+              <li className="pure-menu-item" ><Link to="/sobre" className="pure-menu-link" id="itemSobre" onClick={this.mudaPagina} >Sobre</Link></li>
             </ul>
           </div>
         </div>
@@ -53,6 +88,8 @@ class App extends Component {
               <Route path="/" exact component={sessionList} />
               <Route path="/atividades" component={sessionList} />
               <Route path="/palestrantes" component={PalestranteList} />
+              <Route path="/mapa" component={sessionList} />
+              <Route path="/sobre" component={sessionList} />
             </Switch>
           </div>
         
