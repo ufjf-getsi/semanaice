@@ -26,4 +26,4 @@ render(){
 }
 }
 
-export default palestranteList
+export default palestranteList;

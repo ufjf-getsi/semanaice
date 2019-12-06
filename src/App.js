@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
-import PalestranteList from './components/palestrantelist';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import PalestranteList from './components/Palestrantelist';
 import sessionList from './components/sessionList';
+import Mapa from './components/Mapa';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
 
@@ -69,7 +70,7 @@ class App extends Component {
 
         <div id="menu">
           <div className="pure-menu">
-            <a className="pure-menu-heading">Menu</a>
+            <p className="pure-menu-heading">Menu</p>
 
             <ul className="pure-menu-list">
               <li className="pure-menu-item" ><Link to="/atividades" className="pure-menu-link" id="itemAtividades" onClick={this.mudaPagina} >Atividades</Link></li>
@@ -88,7 +89,7 @@ class App extends Component {
               <Route path="/" exact component={sessionList} />
               <Route path="/atividades" component={sessionList} />
               <Route path="/palestrantes" component={PalestranteList} />
-              <Route path="/mapa" component={sessionList} />
+              <Route path="/mapa" component={Mapa} />
               <Route path="/sobre" component={sessionList} />
             </Switch>
           </div>
