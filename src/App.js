@@ -5,6 +5,7 @@ import './css/side-menu.css';
 import PalestrantesList from './components/PalestrantesList';
 import AtividadesList from './components/AtividadesList';
 import Mapa from './components/Mapa';
+import Sobre from './components/Sobre';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
@@ -90,7 +91,7 @@ class App extends Component {
               <Route path="/atividades" component={AtividadesList} />
               <Route path="/palestrantes" component={PalestrantesList} />
               <Route path="/mapa" component={Mapa} />
-              <Route path="/sobre" component={AtividadesList} />
+              <Route path="/sobre" component={Sobre} />
             </Switch>
           </div>
         
