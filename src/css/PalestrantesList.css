@@ -1,5 +1,7 @@
-.header-Session {
-    display: block;
+
+
+.header-Palestrantes {
+    display: table;
     height: auto;
     width: 100%;
     margin: 0;
@@ -12,7 +14,7 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header-Session h1 {
+.header-Palestrantes h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -21,18 +23,20 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.header-Session h2 {
+.header-Palestrantes h2 {
    font-weight: 300;
    color: #ccc;
    padding: 0;
    margin-top: 0;
 }
-.content-Session {
+.content-Palestrantes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-gap: 10px;
     width: 100%;
-    margin-bottom: 50px;
     line-height: 1.6em;
 }
-.content-Session-subhead {
+.content-Palestrantes-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #888;
@@ -40,24 +44,8 @@
 ul{
     padding-inline-start: 0px;
 }
-.title-Session{
+.title-Palestrantes{
     color: white;
     width: 100%;
-}
-.listaTipos-Session{
-    align-self: center;
-}
-#tipoTodos-Session{
-    border-bottom: 1px solid #ffffff;
-}
-.tipos-Session{
-    display: inline-block;
-    color: white;
-    text-align: center;
-    height: auto;
-    width: 50%;
-    border-bottom: 1px solid #8f1616;
-}
-.tipos-Session:hover{
-    cursor: pointer;
+    padding-bottom: 10px;
 }
