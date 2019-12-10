@@ -6,19 +6,25 @@
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
+
 .nome-PalestrantesItem{
-    color: rgb(65, 65, 65);
-    font-weight: bold;
     margin: 2px;
-    padding-left: 7px;
+    padding: 0px 7px;
+    text-align: justify;
 }
 .descricao-PalestrantesItem{
     margin: 2px;
-    padding-left: 7px;
+    padding: 0px 7px;
+    text-align: justify;
 }
 .contato-PalestrantesItem{
     margin: 2px;
-    padding-left: 7px;
+    padding: 0px 7px;
+    text-align: justify;
+}
+.titles-PalestrantesItem{
+    color: rgb(65, 65, 65);
+    font-weight: bold;
 }
 .perfil-PalestrantesItem{
     margin-top: 5px;
