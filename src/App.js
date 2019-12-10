@@ -34,7 +34,6 @@ class App extends Component {
   }*/
 
   mudaPagina(evento){
-    console.log(evento);
     if(evento.target.id === "itemAtividades"){
       document.getElementById(evento.target.id).style.background = "#d61f1f";
       document.getElementById("itemPalestrantes").style.background = "#191818";

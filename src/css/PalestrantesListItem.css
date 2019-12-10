@@ -3,7 +3,6 @@
     width: 98%;
     height: auto;
     border: 1px solid #000000;
-    border-left: 7px solid deepskyblue;
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
@@ -20,4 +19,16 @@
 .contato-PalestrantesItem{
     margin: 2px;
     padding-left: 7px;
+}
+.perfil-PalestrantesItem{
+    margin-top: 5px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: solid 1px black;
 }
