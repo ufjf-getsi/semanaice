@@ -6,7 +6,7 @@
     "name": "Criando Apps Cross Plataformas em minutos",
     "location": "L107",
     "description": "Neste minicurso criaremos uma solução multi-plataforma capaz de tirar fotos e publicar nas redes sociais.",
-    "speakerIds": [1],
+    "speakerIds": 1,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -16,7 +16,7 @@
     "name": "Introdução a Pixel arte para games com Piskel",
     "location": "L107",
     "description": "O Piskel é uma excelente opção para criar pixel art e sprites animados para games, tendo uma interface bem intuitiva ele te permite trabalhar sombras e degradês, alterar cores, ajustar a iluminação, caneta espelhada e muito mais. Durante a aula vamos modelar personagens clássicos trabalhando as ferramentas do software e criar as artes do game FlappyBird para o Minicurso das 16h.",
-    "speakerIds": [2],
+    "speakerIds": 2,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -26,7 +26,7 @@
     "name": "Desenvolvendo o jogo FlappyBird para Android com Construct2",
     "location": "L107",
     "description": "Construct 2 é um editor de jogos 2D baseado em HTML5, desenvolvido pela Scirra Ltda. É destinado para todos os níveis de programadores, permitindo a criação rápida de jogos, por meio do estilo Drag-and-Drop usando um editor visual e um sistema de lógica baseada em comportamento. Você criará um game completo no Construct2 e também aprenderá a converter seu game para o formato apk, podendo também usar suas próprias sprites.",
-    "speakerIds": [2],
+    "speakerIds": 2,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -36,7 +36,7 @@
     "name": "Introdução ao C++ moderno",
     "location": "L107",
     "description": "A linguagem C++ foi inicialmente desenvolvida por Bjarne Stroustrup como um adicional a linguagem C que permitia a programação utilizando o paradigma orientado a objetos, com isso, desde os anos 90 se tornou uma das linguagens mais utilizadas comercialmente e na academia devido ao seu desempenho. Com o lançamento de novas versões muitas funcionalidades foram adicionadas a linguagem e atualmente a forma de programação nas suas versões recentes se difere muito da linguagem C. Este minicurso tem como intuito introduzir ferramentas adicionadas a partir da versão C++11, que é a considerada como onde começa o C++ moderno, tentando mostrar como programar no idioma das novas versões e mostrando o porque de evitar a forma de programar da linguagem C.",
-    "speakerIds": [3],
+    "speakerIds": 3,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -46,7 +46,7 @@
     "name": "Introdução ao Machine Learning com Scikit Learn",
     "location": "L205",
     "description": "O termo Aprendizado de Máquina (do inglês Machine Learning) vem se popularizando cada vez mais nos últimos anos. Uma maneira fácil de ter o primeiro contato com essa área é através do Scikit Learn, uma biblioteca código aberto de Aprendizado de Máquina para a linguagem Python. Este minicurso fará uma introdução teórica ao Machine Learning e abordará na prática alguns algoritmos disponibilizados pela biblioteca citada.",
-    "speakerIds": [4],
+    "speakerIds": 4,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -56,7 +56,7 @@
     "name": "Containers, nuvem e DevOps com Docker",
     "location": "L205",
     "description": "Através da revolução na infraestrutura de sistemas e serviços para internet, O Docker se consolida cada vez mais como a principal forma de desenvolver e aplicações em containers, possibilitando escalabilidade e portabilidade das ferramentas com a agilidade que o ecossistema atual demanda. Neste curso serão abordados conceitos fundamentais da plataforma, comandos e aplicações básicos e a orquestração dos containers com o docker-compose.",
-    "speakerIds": [5],
+    "speakerIds": 5,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -66,7 +66,7 @@
     "name": "O que os jogos analógicos podem ganhar com computação.",
     "location": "S209",
     "description": "Jogos analógicos são muitas vezes negligênciados pelos estudantes de computação interessados em criar jogos. Porém os conhecimentos de computação podem fazer toda diferença no desenvolvimento de um jogo analógico.  Vamos ampliar a visão de como podemos trabalhar com jogos, mostrar novas possibilidades de como trabalhar nesse mercado tão desejado.",
-    "speakerIds": [6],
+    "speakerIds": 6,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -76,7 +76,7 @@
     "name": "Introdução ao Latex",
     "location": "L107",
     "description": "LaTeX é um conjunto de macros para o software de diagramação de textos TeX. Muito utilizado na produção de textos técnicos e científicos, o LaTeX é um software livre indicado para quem deseja elevar a qualidade e produtividade no desenvolvimento de artigos e apresentações. Com o objetivo de ensinar não só aos estudantes da Ciência da Computação, mas também qualquer pessoa interessada em aprender a utilizar o LaTeX, esse minicurso abordará como começar a escrever artigos e apresentações em TeX, passando por alguns ambientes muito utilizados, como: listas, tabelas, equações e figura.",
-    "speakerIds": [7],
+    "speakerIds": 7,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -86,7 +86,7 @@
     "name": "Introdução à Programação com Python",
     "location": "L107",
     "description": "O objetivo do minicurso é introduzir os aspectos básicos da linguagem Python (sintaxe, tipos de dados, construções básicas, construção de funções, listas, tuplas e dicionários), e então apresentar os conceitos de análise de dados utilizando algumas bibliotecas como matplotlib e numpy.",
-    "speakerIds": [8],
+    "speakerIds": 8,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -96,7 +96,7 @@
     "name": "Introdução ao ReactJS",
     "location": "L205",
     "description": "A proposta do minicurso é lhe guiar a desenvolver aplicações com interface dinâmica utilizando uma ferramenta poderosa empregada em grandes empresas como Facebook, Instagram e Mercado Livre. Esse minicurso irá introduzir métodos, fundamentos e bibliotecas para construção de aplicações incríveis em ReactJS.",
-    "speakerIds": [9],
+    "speakerIds": 9,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -106,7 +106,7 @@
     "name": "Introdução a Godot",
     "location": "L205",
     "description": "Minicurso mostrando os conceitos usados na engine Godot e desenvolvimento dos conceitos na prática.",
-    "speakerIds": [10],
+    "speakerIds": 10,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -116,7 +116,7 @@
     "name": "Maratona Júnior de Programação",
     "location": "L205",
     "description": "",
-    "speakerIds": [11],
+    "speakerIds": 11,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -126,7 +126,7 @@
     "name": "A computação aplicada à educação: novos paradigmas de ensino.",
     "location": "S209",
     "description": "Com o tempo, a educação foi aderindo o uso da computação de maneira abrangente. O acesso a materiais educacionais foi de um passado com livros monocromáticos, a uma atualidade com uso de multimídias, chegando a repositórios com materiais disponíveis ao aluno todo o tempo. A palestra aborda diferentes aplicações da infomática na educação, tanto como ferramenta para alunos, como ferramenta para gestores, suas influências e as possibilidades da exploração da computação em novas maneiras de ensino.",
-    "speakerIds": [12],
+    "speakerIds": 12,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -136,7 +136,7 @@
     "name": "Introdução à Bitcoin",
     "location": "S209",
     "description": "No momento, criptomoedas já são conhecimento geral - em especial, a primeira e mais bem-sucedida, Bitcoin. Seu grande diferencial está em ser descentralizada. Pode a Bitcoin competir com outras formas de dinheiro? Como ela funciona?",
-    "speakerIds": [13],
+    "speakerIds": 13,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -146,7 +146,7 @@
     "name": "Cenário Econômico no Brasil e Impactos para o Empreendedorismo",
     "location": "S210",
     "description": "A palestra abordará sobre o cenário econômico atual e suas tendências no país, avaliando seus impactos para o empreendedorismo.",
-    "speakerIds": [14],
+    "speakerIds": 14,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -156,7 +156,7 @@
     "name": "Não se apaixone pela sua ideia!",
     "location": "S210",
     "description": "A importância de pivotar sem perder o propósito e o dia a dia da Yunikon como empresa de desenvolvimento",
-    "speakerIds": [15],
+    "speakerIds": 15,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -166,7 +166,7 @@
     "name": "Entendendo a Nintendo na teoria e na prática",
     "location": "S210",
     "description": "A palestra irá mostrar como a empresa japonesa Nintendo evoluiu e se solidificou durante seus 130 anos de história, fazer uma análise da estratégia da empresa baseada no modelo de gestão japonês, mostrar como eles conseguem ser inovadores na forma como pensam e constroem seus produtos e demonstrar que ela está muito bem posicionada para o futuro. Junto com a palestra haverá uma demonstração prática utilizando um Nintendo Switch com gameplay intercalado ao conteúdo de uma forma leve e didática.",
-    "speakerIds": [16],
+    "speakerIds": 16,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -176,7 +176,7 @@
     "name": "Conhecendo o Linux",
     "location": "L107",
     "description": "O curso de Linux busca introduzir aos participantes o funcionamento básico destes Sistemas Operacionais. Ao longo do curso abordaremos os seguintes temas: introdução histórica, vantagens, desvantagens, comandos básicos do terminal, instalação/desinstalação de programas e principais alternativas ao MS Office. Será utilizada a distribuição Mint.",
-    "speakerIds": [17],
+    "speakerIds": 17,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -186,7 +186,7 @@
     "name": "Introdução ao método dos elementos finitos através da biblioteca FEniCS",
     "location": "L205",
     "description": "Conhece ou quer conhecer sobre equações diferenciais parciais? Quer saber como resolvê-las numéricamente de maneira simplificada? FEniCS é um pacote de ferramentas focado na solução de problemas do valor de contorno, também conhecidas como Equações Diferenciais Parciais(EDP), utilizado a abordagem do método dos elementos finitos(MEF). Sua implementação é feita através da linguagem de programação Python de forma bem direta, já que o código pode ser montado bem pŕoximo a uma notação matemática. Esse minicurso fará uma introdução ao método dos elementos finitos, partindo de como reescrever uma EDP em uma forma fraca. A equação de Poisson em 1D será resolvida utilizado o MEF e questões como discretização, condições de contorno e solução do problema similar serão discutidas. O curso seguirá mostrando como montar um código em Python com a biblioteca FEniCS e a resolução de problemas mais complexos presentes no dia a dia será descutida, como por exemplo, um problema de difusão estacionária e transiente em 2D, um problema de escoamento em meios porosos em 2D e um problema de mecânica dos sólidos.",
-    "speakerIds": [18],
+    "speakerIds": 18,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -196,7 +196,7 @@
     "name": "Maratona de Programação",
     "location": "L205",
     "description": "Maratona de Programação como treinamento para competições utilizando juiz online",
-    "speakerIds": [19],
+    "speakerIds": 19,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -206,7 +206,7 @@
     "name": "Vivência e Atuação no Trabalho Remoto",
     "location": "S209",
     "description": "O trabalho remoto vem ganhando cada vez mais adeptos no Brasil e, as empresas têm aumentado o número de profissionais contratados nessa modalidade. Entretanto, nem todos estão preparados ou têm conhecimento suficiente para essa forma de trabalho. Nesse sentido, experiências e processos no dia a dia do trabalho remoto serão apresentados, a fim de fomentar e criar reflexões sobre essa tendência no mercado de trabalho.",
-    "speakerIds": [20],
+    "speakerIds": 20,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -216,7 +216,7 @@
     "name": "Computadores para todos",
     "location": "S209",
     "description": "Imagine como seria se todos os jovens (mesmo os de comunidades mais carentes) pudessem ter um computador, para estudar, aprender, navegar, e se desenvolver. Neste conteúdo Tiago Gouvêa vem apresentar uma ideia bem estruturada de como tornar isso realidade, para todos validarem, opinarem e dizerem se irão ou não ajudar este grande projeto acontecer. Caso o projeto aconteça, poderemos apresentar ele na próxima Campus Party Brasil, em São Paulo no começo de 2020.",
-    "speakerIds": [21],
+    "speakerIds": 21,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -226,7 +226,7 @@
     "name": "Desafios para implementação de Metodologias Ágeis",
     "location": "S209",
     "description": "A Metodologia Ágil vem sendo cada vez mais utilizada por empresas de desenvolvimento de software, desde que se consolidou por meio da criação do “Manifesto Ágil”. Porém, na busca de atingir uma alta performance, as organizações acabam por esquecer os princípios básicos da metodologia e que sua adoção é mais do que simplesmente seguir uma cartilha ou um conjunto de normas. É necessário que a empresa e sua equipe se transformem! \nA palestra tem o intuito de compartilhar um pouco sobre o processo de transformação ágil em uma multinacional, os principais desafios e lições aprendidas nesse processo.",
-    "speakerIds": [22],
+    "speakerIds": 22,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -236,7 +236,7 @@
     "name": "A Internet de tudo: dos sensores à analise de dados",
     "location": "S210",
     "description": "Depois dos computadores e da Internet em si, Internet das Coisas (IoT) é anunciada como uma nova era. Entretanto, IoT já é, atualmente, associada a muito mais que coisas e sensores. Os dados gerados e a capacidade de empresas de tratá-los passa a ser um dos grandes focos de pesquisa. O tema é tão complexo que até empresas tradicionais são forçadas a evoluir e fazer novas parcerias. Nesta palestra, apresentarei uma visão geral das minhas atividades de pesquisa que, de forma holística, tentam tratar toda cadeia de aquisição e tratamento de dados na Internet. Irei apresentar temas que envolvem a criação de plataformas de redes sensores, desenvolvimento de meios eficientes para transmissão de dados em redes e, o tratamento e análise desses dados. Em particular, apresentarei um exemplo de pesquisa ---fruto de parceria entre academia e indústria--- que mostra como Data Science e, em especial, Network Science são usados para melhorar a experiência de usuários de streaming ao vivo em grandes eventos na Internet.",
-    "speakerIds": [23],
+    "speakerIds": 23,
     "tracks": ["Semana da Computação"]
   },
   {
@@ -246,7 +246,7 @@
     "name": "Empresas SaaS: Onde vivem, O que comem e Como geram milhões de reais",
     "location": "S210",
     "description": "Arquitetura SaaS e sua influência na escalabilidade do modelo de negócio das maiores empresas - da iClips à Netflix",
-    "speakerIds": [24],
+    "speakerIds": 24,
     "tracks": ["Semana do ICE"]
   },
   {
@@ -256,7 +256,7 @@
     "name": "Arquitetura de microsserviços: Aplicações como peças de LEGO",
     "location": "S210",
     "description": "Arquitetura de microsserviços e como integrar diversas aplicações de forma eficiente para construir a melhor solução.",
-    "speakerIds": [25],
+    "speakerIds": 25,
     "tracks": ["Semana da Arquitetura"]
   }
 ]

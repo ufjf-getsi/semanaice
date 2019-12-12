@@ -36,7 +36,7 @@ class AtividadesList extends Component{
                 <div className="content-Atividades">
                     {this.state.atividades.map(function(item){
                         return (
-                            <AtividadesListItem key={item.id} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location}/>
+                            <AtividadesListItem key={item.id} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item}/>
                         );
                     })}
                 </div>

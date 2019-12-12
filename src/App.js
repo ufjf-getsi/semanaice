@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 class App extends Component {
 
+
   /*componentDidMount () {
     if(window.location.pathname === "/" || window.location.pathname === "/atividades") {
       this.mudaPagina(document.getElementById("itemAtividades"));
@@ -34,27 +35,12 @@ class App extends Component {
   }*/
 
   mudaPagina(evento){
-    if(evento.target.id === "itemAtividades"){
-      document.getElementById(evento.target.id).style.background = "#d61f1f";
-      document.getElementById("itemPalestrantes").style.background = "#191818";
-      document.getElementById("itemMapa").style.background = "#191818";
-      document.getElementById("itemSobre").style.background = "#191818";
-    } else if(evento.target.id === "itemPalestrantes"){
-      document.getElementById(evento.target.id).style.background = "#d61f1f";
-      document.getElementById("itemAtividades").style.background = "#191818";
-      document.getElementById("itemMapa").style.background = "#191818";
-      document.getElementById("itemSobre").style.background = "#191818";
-    } else if(evento.target.id === "itemMapa") {
-      document.getElementById(evento.target.id).style.background = "#d61f1f";
-      document.getElementById("itemAtividades").style.background = "#191818";
-      document.getElementById("itemPalestrantes").style.background = "#191818";
-      document.getElementById("itemSobre").style.background = "#191818";
-    } else if(evento.target.id === "itemSobre") {
-      document.getElementById(evento.target.id).style.background = "#d61f1f";
-      document.getElementById("itemAtividades").style.background = "#191818";
-      document.getElementById("itemPalestrantes").style.background = "#191818";
-      document.getElementById("itemMapa").style.background = "#191818";
-    }
+    document.getElementById("itemAtividades").style.background = "#191818";
+    document.getElementById("itemPalestrantes").style.background = "#191818";
+    document.getElementById("itemMapa").style.background = "#191818";
+    document.getElementById("itemSobre").style.background = "#191818";
+    
+    document.getElementById(evento.target.id).style.background = "#d61f1f";
   }
 
   render() {
