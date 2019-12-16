@@ -21,7 +21,7 @@
 .horarioLocal-AtividadesItem{
     margin: 2px;
     padding-left: 7px;
-    max-width: 85%;
+    max-width: 80%;
 }
 
 
@@ -48,6 +48,7 @@ input#fav-AtividadesItem:checked + label {
     background-image: url("../img/images.png");
 }
 .favoritar-AtividadesItem{
+    width: 80px;
     float: right;
     transform: translateY(-135%);
     margin-right: 10px;
