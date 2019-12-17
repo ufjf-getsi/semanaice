@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/AtividadesListItem.css';
+import Session from '../data/speakers'
 import PubSub from 'pubsub-js';
 
 class AtividadesListItem extends Component{
@@ -60,8 +61,12 @@ class AtividadesListItem extends Component{
             <div id="item-AtividadesItem">
                 <p className="titulo-AtividadesItem">{this.props.nome}</p>
                 <p className="horarioLocal-AtividadesItem">{this.props.dataInicio} - {this.props.dataFinal}: {this.props.local}</p>
-
                 <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
+                {Session.map(function(item){
+                    if(item.id === this.props.id){
+                    return (<p className='PalestranteNome'>{item.name}</p>);   
+                    }
+                })}
             </div>
         );
     }
