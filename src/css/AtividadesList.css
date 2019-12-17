@@ -61,3 +61,11 @@ ul{
 .tipos-Atividades:hover{
     cursor: pointer;
 }
+#semAtividade{
+    position: relative;
+    display: block;
+    font-weight: bold;
+    font-size: 15pt;
+
+    text-align: center;
+}

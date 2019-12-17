@@ -47,7 +47,8 @@ class AtividadesList extends Component{
                 </div>
 
                 <div className="content-Atividades">
-                    {this.state.atividades.map(function(item){
+                    {this.state.atividades.length > 0 ?
+                    this.state.atividades.map(function(item){
                         var favoritos = JSON.parse(localStorage.getItem("favoritos"));
                         var existe = false;
                         if(favoritos != null) {
@@ -67,7 +68,7 @@ class AtividadesList extends Component{
                                 <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item}/>
                             );
                         }
-                    })}
+                    }) : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
                 </div>
             </div>
         );
