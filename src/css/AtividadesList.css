@@ -5,7 +5,7 @@
     margin: 0;
     background: #8f1616;
     padding: 0%;
-    text-align: center;
+    
     padding-top: 2.5em;
     padding-right: 0;
     padding-bottom: 0px;
@@ -13,6 +13,7 @@
     border-bottom: 1px solid #eee;
 }
 .header-Atividades h1 {
+    text-align: center;
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -69,3 +70,86 @@ ul{
 
     text-align: center;
 }
+#btFiltro{
+    position: relative;
+    display: block;
+    background: none;
+    background: url(../img/filterIcon.png) no-repeat;
+    padding: 0px;
+    border: none;
+    width: 52px;
+    height: 52px;
+    margin-right: 10px;
+    margin-left: auto;
+}
+.popup-Atividades input[type=checkbox]{
+    display: inline-block;
+}
+.popup-Atividades input[type=submit]{
+    text-align: center;
+}
+.popup-Atividades h3{
+    text-align: center;
+}
+.popup-Atividades label{
+    align-self: flex-end;
+    margin-right: 0px;
+    margin-left: auto;
+}
+.titleFilter{
+    display: inline-block;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+    align-self: auto;
+}
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 17px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }

@@ -3,6 +3,7 @@ import Session from '../data/sessions';
 import AtividadesListItem from './AtividadesListItem';
 import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
+import Popup from "reactjs-popup";
 
 class AtividadesList extends Component{
 
@@ -11,6 +12,13 @@ class AtividadesList extends Component{
         this.state = {atividades : Session, selecFav : false};
     
         
+    }
+
+    componentWillMount(){
+        var fav = JSON.parse(localStorage.getItem("favoritos"));
+        if(fav === null){
+            localStorage.setItem("favoritos", "[]");
+        }
     }
 
     componentDidMount(){
@@ -44,6 +52,30 @@ class AtividadesList extends Component{
                         <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo.bind(this)}>TODOS</li>
                         <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo.bind(this)}>FAVORITOS</li>
                     </ul>
+                    <Popup trigger={<button id="btFiltro" onClick={()=> this.setState({addPopupFiltro : true})}></button>} position="left center">
+                        <div className="popup-Atividades">
+                            <h3>Filtro</h3>
+                            <form action="#">
+                                <p className="titleFilter">Semana da computação</p>
+                                <label className="switch">
+                                    <input type="checkbox" />
+                                    <span className="slider"></span>
+                                </label>
+                                <p className="titleFilter">Semana da Quimica</p>
+                                <label className="switch">
+                                    <input type="checkbox" />
+                                    <span className="slider"></span>
+                                </label>
+                                <p className="titleFilter">Semana da Física</p>
+                                <label className="switch">
+                                    <input type="checkbox" />
+                                    <span className="slider"></span>
+                                </label><br/>
+                                <input type="button" value="Cancelar"/>
+                                <input type="submit" value="Salvar"/>
+                            </form>
+                        </div>
+                    </Popup>
                 </div>
 
                 <div className="content-Atividades">
