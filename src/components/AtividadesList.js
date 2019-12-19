@@ -9,7 +9,7 @@ class AtividadesList extends Component{
 
     constructor(){
         super();
-        this.state = {atividades : Session, selecFav : false};
+        this.state = {atividades : Session, selecFav : false, rotulos : [], filtrado : false, filtro : []};
     
         
     }
@@ -19,6 +19,21 @@ class AtividadesList extends Component{
         if(fav === null){
             localStorage.setItem("favoritos", "[]");
         }
+
+        var aux = this.state.rotulos;
+        Session.map(function(atividade){
+            var existe = false;
+            aux.map(function(rotulo){
+                if(atividade.tracks === rotulo){
+                    existe = true;
+                }
+            })
+            if(!existe){
+                aux.push(atividade.tracks);
+                
+            }
+        })
+        this.setState({rotulos : aux});
     }
 
     componentDidMount(){
@@ -27,6 +42,18 @@ class AtividadesList extends Component{
                 this.setState({atividades : novaLista});
             }
         }.bind(this));
+    }
+
+    filtrar(evento){
+        evento.preventDefault();
+        var aux = [];
+        this.state.rotulos.map(function(rotulo){
+            if(document.getElementById(rotulo).checked){
+                aux.push(rotulo);
+            }
+        })
+        this.setState({filtrado : true, filtro : aux});
+        console.log(aux);
     }
 
     selecionaTipo(evento){
@@ -52,34 +79,32 @@ class AtividadesList extends Component{
                         <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo.bind(this)}>TODOS</li>
                         <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo.bind(this)}>FAVORITOS</li>
                     </ul>
-                    <Popup trigger={<button id="btFiltro" onClick={()=> this.setState({addPopupFiltro : true})}></button>} position="left center">
+                    <Popup trigger={<button id="btFiltro" ></button>} position="bottom right" on="click">
                         <div className="popup-Atividades">
                             <h3>Filtro</h3>
                             <form action="#">
-                                <p className="titleFilter">Semana da computação</p>
-                                <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider"></span>
-                                </label>
-                                <p className="titleFilter">Semana da Quimica</p>
-                                <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider"></span>
-                                </label>
-                                <p className="titleFilter">Semana da Física</p>
-                                <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider"></span>
-                                </label><br/>
-                                <input type="button" value="Cancelar"/>
-                                <input type="submit" value="Salvar"/>
+                                {this.state.rotulos.map(function(rotulo){
+                                    return(
+                                        <div key={rotulo}>
+                                            <p className="titleFilter">{rotulo}</p>
+                                            <label className="switch">
+                                                <input type="checkbox" id={rotulo} />
+                                                <span className="slider"></span>
+                                            </label>
+                                        </div>
+                                    )
+                                })}
+
+                                
+                                <input type="button" value="Cancelar" />
+                                <input type="submit" value="Salvar" onClick={this.filtrar.bind(this)}/>
                             </form>
                         </div>
                     </Popup>
                 </div>
 
                 <div className="content-Atividades">
-                    {this.state.atividades.length > 0 ?
+                    {this.state.atividades.length > 0 ? 
                     this.state.atividades.map(function(item){
                         var favoritos = JSON.parse(localStorage.getItem("favoritos"));
                         var existe = false;
@@ -100,7 +125,8 @@ class AtividadesList extends Component{
                                 <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item}/>
                             );
                         }
-                    }) : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
+                    }) 
+                    : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
                 </div>
             </div>
         );
