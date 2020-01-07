@@ -11,7 +11,8 @@ class AtividadesList extends Component{
         super();
         this.state = {atividades : Session, selecFav : false, rotulos : [], filtrado : false, filtro : []};
     
-        
+        this.configuraFiltro = this.configuraFiltro.bind(this);
+        this.selecionaTipo = this.selecionaTipo.bind(this);
     }
 
     componentWillMount(){
@@ -40,12 +41,14 @@ class AtividadesList extends Component{
         PubSub.subscribe('atualizaFavoritos', function(topico, novaLista){
             if(this.state.selecFav){
                 this.setState({atividades : novaLista});
+                this.filtrar();
             }
         }.bind(this));
     }
 
-    filtrar(evento){
+    configuraFiltro(evento){
         evento.preventDefault();
+        console.log("Before: " + this.state.filtrado);
         var aux = [];
         this.state.rotulos.map(function(rotulo){
             if(document.getElementById(rotulo).checked){
@@ -53,7 +56,64 @@ class AtividadesList extends Component{
             }
         })
         this.setState({filtrado : true, filtro : aux});
-        console.log(aux);
+        console.log("After: " + this.state.filtrado);
+        
+
+        /*if(aux.length > 0) {
+            var auxAtiv = [];
+            this.state.atividades.map(function(it1){
+                var foi = false;
+                aux.map(function(it2){
+                    if(it1.tracks === it2){
+                        if(!foi){
+                            auxAtiv.push(it1);
+                        }
+                    }
+                })
+            })
+
+            this.setState({atividades : auxAtiv});
+        }*/
+        this.filtrar();
+    }
+
+    filtrar(){
+        
+        //console.log(this.state.filtrado);
+        if(this.state.filtrado){
+            var aux = this.state.filtro;
+            if(aux.length > 0) {
+                var auxAtiv = [];
+
+                if(!this.state.selecFav){
+                    Session.map(function(it1){
+                        aux.map(function(it2){
+                            if(it1.tracks === it2){
+                                auxAtiv.push(it1);
+                            }
+                        })
+                    })
+                } else {
+                    var favoritos = JSON.parse(localStorage.getItem("favoritos"));
+                    favoritos.map(function(it1){
+                        aux.map(function(it2){
+                            if(it1.tracks === it2){
+                                auxAtiv.push(it1);
+                            }
+                        })
+                    })
+                }
+
+                this.setState({atividades : auxAtiv});
+            } else {
+                this.setState({filtrado : false, filtro : []});
+                if(!this.state.selecFav){
+                    this.setState({atividades : Session});
+                } else {
+                    this.setState({atividades : JSON.parse(localStorage.getItem("favoritos"))});
+                }
+            }
+        } 
     }
 
     selecionaTipo(evento){
@@ -68,6 +128,7 @@ class AtividadesList extends Component{
 
             this.setState({atividades : JSON.parse(localStorage.getItem("favoritos")), selecFav : true});
         }
+        this.filtrar();
     }
 
     render(){
@@ -76,8 +137,8 @@ class AtividadesList extends Component{
                 <div className="header-Atividades">
                     <h1 className="title-Atividades">Atividades</h1>
                     <ul className="listaTipos-Atividades">
-                        <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo.bind(this)}>TODOS</li>
-                        <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo.bind(this)}>FAVORITOS</li>
+                        <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo}>TODOS</li>
+                        <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo}>FAVORITOS</li>
                     </ul>
                     <Popup trigger={<button id="btFiltro" ></button>} position="bottom right" on="click">
                         <div className="popup-Atividades">
@@ -88,7 +149,7 @@ class AtividadesList extends Component{
                                         <div key={rotulo}>
                                             <p className="titleFilter">{rotulo}</p>
                                             <label className="switch">
-                                                <input type="checkbox" id={rotulo} />
+                                                <input type="checkbox" id={rotulo} defaultChecked={true}/>
                                                 <span className="slider"></span>
                                             </label>
                                         </div>
@@ -97,7 +158,7 @@ class AtividadesList extends Component{
 
                                 
                                 <input type="button" value="Cancelar" />
-                                <input type="submit" value="Salvar" onClick={this.filtrar.bind(this)}/>
+                                <input type="submit" value="Salvar" onClick={this.configuraFiltro}/>
                             </form>
                         </div>
                     </Popup>
