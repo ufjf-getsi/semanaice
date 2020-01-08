@@ -5,6 +5,7 @@ import MapContainer from './MapContainer';
 class Mapa extends Component {
 
     render() {
+        document.title = 'Semana do ICE - Mapa';
         return(
             <div className="content-Mapa">
                 <div className="header-Mapa">

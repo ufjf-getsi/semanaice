@@ -3,6 +3,7 @@ import '../css/Sobre.css';
 
 class Sobre extends Component {
     render() {
+        document.title = 'Semana do ICE - Sobre';
         return(
             <div className="content-Sobre">
                 <div className="header-Sobre">

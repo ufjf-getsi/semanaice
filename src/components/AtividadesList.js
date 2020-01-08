@@ -13,6 +13,7 @@ class AtividadesList extends Component{
     
         this.configuraFiltro = this.configuraFiltro.bind(this);
         this.selecionaTipo = this.selecionaTipo.bind(this);
+        this.limparFiltro = this.limparFiltro.bind(this);
     }
 
     componentWillMount(){
@@ -55,26 +56,14 @@ class AtividadesList extends Component{
                 aux.push(rotulo);
             }
         })
-        this.setState({filtrado : true, filtro : aux});
+        if(aux.length < this.state.rotulos.length){
+            this.setState({filtrado : true, filtro : aux});
+            this.filtrar();
+        } else {
+            this.setState({filtrado : false, filtro : []});
+            this.limparFiltro();
+        }
         console.log("After: " + this.state.filtrado);
-        
-
-        /*if(aux.length > 0) {
-            var auxAtiv = [];
-            this.state.atividades.map(function(it1){
-                var foi = false;
-                aux.map(function(it2){
-                    if(it1.tracks === it2){
-                        if(!foi){
-                            auxAtiv.push(it1);
-                        }
-                    }
-                })
-            })
-
-            this.setState({atividades : auxAtiv});
-        }*/
-        this.filtrar();
     }
 
     filtrar(){
@@ -82,38 +71,41 @@ class AtividadesList extends Component{
         //console.log(this.state.filtrado);
         if(this.state.filtrado){
             var aux = this.state.filtro;
-            if(aux.length > 0) {
-                var auxAtiv = [];
+            var auxAtiv = [];
 
-                if(!this.state.selecFav){
-                    Session.map(function(it1){
-                        aux.map(function(it2){
-                            if(it1.tracks === it2){
-                                auxAtiv.push(it1);
-                            }
-                        })
+            if(!this.state.selecFav){
+                Session.map(function(it1){
+                    aux.map(function(it2){
+                        if(it1.tracks === it2){
+                            auxAtiv.push(it1);
+                        }
                     })
-                } else {
-                    var favoritos = JSON.parse(localStorage.getItem("favoritos"));
-                    favoritos.map(function(it1){
-                        aux.map(function(it2){
-                            if(it1.tracks === it2){
-                                auxAtiv.push(it1);
-                            }
-                        })
-                    })
-                }
-
-                this.setState({atividades : auxAtiv});
+                })
             } else {
-                this.setState({filtrado : false, filtro : []});
-                if(!this.state.selecFav){
-                    this.setState({atividades : Session});
-                } else {
-                    this.setState({atividades : JSON.parse(localStorage.getItem("favoritos"))});
-                }
+                var favoritos = JSON.parse(localStorage.getItem("favoritos"));
+                favoritos.map(function(it1){
+                    aux.map(function(it2){
+                        if(it1.tracks === it2){
+                            auxAtiv.push(it1);
+                        }
+                    })
+                })
             }
+
+            this.setState({atividades : auxAtiv});
         } 
+    }
+
+    limparFiltro(evento){
+        this.setState({filtrado : false, filtro : []});
+        if(!this.state.selecFav){
+            this.setState({atividades : Session});
+        } else {
+            this.setState({atividades : JSON.parse(localStorage.getItem("favoritos"))});
+        }
+        this.state.rotulos.map(function(rotulo){
+            document.getElementById(rotulo).checked = true;
+        })
     }
 
     selecionaTipo(evento){
@@ -132,6 +124,7 @@ class AtividadesList extends Component{
     }
 
     render(){
+        document.title = 'Semana do ICE - Atividades';
         var localFiltro = this.state.filtro;
         return (
             <div id="list-Atividades">
@@ -181,6 +174,7 @@ class AtividadesList extends Component{
                                 
                                 <input type="button" value="Cancelar" />
                                 <input type="button" value="Salvar" onClick={this.configuraFiltro}/>
+                                <input type="button" value="Resetar" onClick={this.limparFiltro}/>
 
                             </form>
                         </div>

@@ -11,6 +11,7 @@ class PalestrantesList extends Component{
     }
 
     render(){
+        document.title = 'Semana do ICE - Palestrantes';
         return (
             <div id="list-Palestrantes">
                 <div className="header-Palestrantes">
