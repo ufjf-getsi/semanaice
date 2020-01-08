@@ -132,6 +132,7 @@ class AtividadesList extends Component{
     }
 
     render(){
+        var localFiltro = this.state.filtro;
         return (
             <div id="list-Atividades">
                 <div className="header-Atividades">
@@ -144,21 +145,43 @@ class AtividadesList extends Component{
                         <div className="popup-Atividades">
                             <h3>Filtro</h3>
                             <form action="#">
-                                {this.state.rotulos.map(function(rotulo){
-                                    return(
-                                        <div key={rotulo}>
-                                            <p className="titleFilter">{rotulo}</p>
-                                            <label className="switch">
-                                                <input type="checkbox" id={rotulo} defaultChecked={true}/>
-                                                <span className="slider"></span>
-                                            </label>
-                                        </div>
-                                    )
-                                })}
+                                {
+                                this.state.filtrado ?
+                                    
+                                    this.state.rotulos.map(function(rotulo){
+                                        var checado = false;
+                                        
+                                        localFiltro.map(function(auxFiltro){
+                                            if(rotulo === auxFiltro){
+                                                checado = true;
+                                            }
+                                        })
+                                        return(
+                                            <div key={rotulo}>
+                                                <p className="titleFilter">{rotulo}</p>
+                                                <label className="switch">
+                                                    <input type="checkbox" id={rotulo} defaultChecked={checado}/>
+                                                    <span className="slider"></span>
+                                                </label>
+                                            </div>
+                                        )
+                                    }) : this.state.rotulos.map(function(rotulo){
+                                            return(
+                                                <div key={rotulo}>
+                                                    <p className="titleFilter">{rotulo}</p>
+                                                    <label className="switch">
+                                                        <input type="checkbox" id={rotulo} defaultChecked={true}/>
+                                                        <span className="slider"></span>
+                                                    </label>
+                                                </div>
+                                            )
+                                        })
+                                }
 
                                 
                                 <input type="button" value="Cancelar" />
-                                <input type="submit" value="Salvar" onClick={this.configuraFiltro}/>
+                                <input type="button" value="Salvar" onClick={this.configuraFiltro}/>
+
                             </form>
                         </div>
                     </Popup>
