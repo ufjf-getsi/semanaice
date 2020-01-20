@@ -2,11 +2,28 @@ import React, { Component } from 'react';
 import '../css/AtividadesListItem.css';
 import Speakers from '../data/speakers'
 import PubSub from 'pubsub-js';
+import { parseISO, format, formatRelative, formatDistance, differenceInDays } from 'date-fns';
+import {ptBR} from 'date-fns/esm/locale'
+
 
 class AtividadesListItem extends Component{
 
     constructor(props){
         super(props);
+        this.state = {mesmoDia : null}
+    }
+
+    componentWillMount(){
+        var primeiraData = parseISO(this.props.dataInicio);
+        var segundaData = parseISO(this.props.dataFinal);
+
+        var diferencaDias = differenceInDays(primeiraData, segundaData);
+
+        if(diferencaDias === 0){
+            this.setState({mesmoDia : true});
+        } else {
+            this.setState({mesmoDia : false});
+        }
     }
 
     componentDidMount(){
@@ -61,15 +78,35 @@ class AtividadesListItem extends Component{
 
 
     render(){
-        return (
-            <div id="item-AtividadesItem">
-                <p className="titulo-AtividadesItem">{this.props.nome}</p>
-                <p className="horarioLocal-AtividadesItem">{this.props.dataInicio} - {this.props.dataFinal}: {this.props.local}</p>
-                <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
-                
-            </div>
-        );
+        if(this.state.mesmoDia){
+            return (
+                <div id="item-AtividadesItem">
+                    <p className="titulo-AtividadesItem">{this.props.nome}</p>
+                    <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", {locale: ptBR})} as {format(parseISO(this.props.dataFinal), "HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                    <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
+                    
+                </div>
+            );
+        } else {
+            return (
+                <div id="item-AtividadesItem">
+                    <p className="titulo-AtividadesItem">{this.props.nome}</p>
+                    <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", {locale: ptBR})} até {format(parseISO(this.props.dataFinal), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                    <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
+                    
+                </div>
+            );
+        }
     }
 }
+
+const firstDate = parseISO('2018-04-01 16:00:00');
+const secondDate = parseISO('2018-04-02 16:00:00');
+
+const formattedDate = format(
+    firstDate, 
+    "'Dia' dd 'de' MMMM', às ' HH:mm'h'",
+    {locale: ptBR}
+  );
 
 export default AtividadesListItem;

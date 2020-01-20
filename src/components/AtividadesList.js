@@ -109,6 +109,7 @@ class AtividadesList extends Component{
     }
 
     selecionaTipo(evento){
+        console.log(Date().toLocaleString());
         if(evento.target.id === "tipoTodos-Atividades"){
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Atividades").style.borderBottom = "1px solid #8f1616";
