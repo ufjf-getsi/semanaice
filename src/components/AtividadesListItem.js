@@ -3,7 +3,7 @@ import '../css/AtividadesListItem.css';
 import Speakers from '../data/speakers'
 import PubSub from 'pubsub-js';
 import { parseISO, format, formatRelative, formatDistance, differenceInDays } from 'date-fns';
-import {ptBR} from 'date-fns/esm/locale'
+import {ptBR} from 'date-fns/esm/locale';
 
 
 class AtividadesListItem extends Component{
@@ -99,14 +99,5 @@ class AtividadesListItem extends Component{
         }
     }
 }
-
-const firstDate = parseISO('2018-04-01 16:00:00');
-const secondDate = parseISO('2018-04-02 16:00:00');
-
-const formattedDate = format(
-    firstDate, 
-    "'Dia' dd 'de' MMMM', às ' HH:mm'h'",
-    {locale: ptBR}
-  );
 
 export default AtividadesListItem;

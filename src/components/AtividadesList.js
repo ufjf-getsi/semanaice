@@ -4,16 +4,18 @@ import AtividadesListItem from './AtividadesListItem';
 import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
 import Popup from "reactjs-popup";
+import { parseISO, format, formatRelative, formatDistance, differenceInSeconds } from 'date-fns';
 
 class AtividadesList extends Component{
 
     constructor(){
         super();
-        this.state = {atividades : Session, selecFav : false, rotulos : [], filtrado : false, filtro : []};
+        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : []};
     
         this.configuraFiltro = this.configuraFiltro.bind(this);
         this.selecionaTipo = this.selecionaTipo.bind(this);
         this.limparFiltro = this.limparFiltro.bind(this);
+        this.ordenaAtividades = this.ordenaAtividades.bind(this);
     }
 
     componentWillMount(){
@@ -66,6 +68,19 @@ class AtividadesList extends Component{
         console.log("After: " + this.state.filtrado);
     }
 
+    ordenaAtividades(ativ){
+        //var ativ = this.state.atividades;
+
+        ativ.sort(function compare(a, b) {
+            if (differenceInSeconds(parseISO(b.dateTimeStart), parseISO(a.dateTimeStart)) > 0) return -1;
+            if (differenceInSeconds(parseISO(b.dateTimeStart), parseISO(a.dateTimeStart)) < 0) return 1;
+            return 0;
+        })
+        console.log(ativ);
+
+        return ativ;
+    }
+
     filtrar(){
         
         //console.log(this.state.filtrado);
@@ -109,17 +124,16 @@ class AtividadesList extends Component{
     }
 
     selecionaTipo(evento){
-        console.log(Date().toLocaleString());
         if(evento.target.id === "tipoTodos-Atividades"){
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : Session, selecFav : false});
+            this.setState({atividades : this.ordenaAtividades(Session), selecFav : false});
         } else {
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoTodos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : JSON.parse(localStorage.getItem("favoritos")), selecFav : true});
+            this.setState({atividades : this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), selecFav : true});
         }
         this.filtrar();
     }
@@ -211,5 +225,13 @@ class AtividadesList extends Component{
         );
     }
 }
+
+const firstDate = parseISO('2018-04-01 16:00:00');
+const secondDate = parseISO('2018-04-02 16:00:00');
+
+const distance = differenceInSeconds(
+    secondDate,
+    firstDate
+);
 
 export default AtividadesList;
