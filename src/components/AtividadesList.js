@@ -51,7 +51,7 @@ class AtividadesList extends Component{
 
     configuraFiltro(evento){
         evento.preventDefault();
-        console.log("Before: " + this.state.filtrado);
+        
         var aux = [];
         this.state.rotulos.map(function(rotulo){
             if(document.getElementById(rotulo).checked){
@@ -59,56 +59,40 @@ class AtividadesList extends Component{
             }
         })
         if(aux.length < this.state.rotulos.length){
-            this.setState({filtrado : true, filtro : aux});
-            this.filtrar();
+            this.setState({atividades : this.filtrar(this.state.atividades, aux, true), filtrado : true, filtro : aux});
         } else {
             this.setState({filtrado : false, filtro : []});
             this.limparFiltro();
         }
-        console.log("After: " + this.state.filtrado);
     }
 
     ordenaAtividades(ativ){
-        //var ativ = this.state.atividades;
 
         ativ.sort(function compare(a, b) {
             if (differenceInSeconds(parseISO(b.dateTimeStart), parseISO(a.dateTimeStart)) > 0) return -1;
             if (differenceInSeconds(parseISO(b.dateTimeStart), parseISO(a.dateTimeStart)) < 0) return 1;
             return 0;
         })
-        console.log(ativ);
 
         return ativ;
     }
 
-    filtrar(){
+    filtrar(tmpAtiv, filtro, filtrado){
         
-        //console.log(this.state.filtrado);
-        if(this.state.filtrado){
-            var aux = this.state.filtro;
+        if(filtrado){
             var auxAtiv = [];
 
-            if(!this.state.selecFav){
-                Session.map(function(it1){
-                    aux.map(function(it2){
-                        if(it1.tracks === it2){
-                            auxAtiv.push(it1);
-                        }
-                    })
+            tmpAtiv.map(function(it1){
+                filtro.map(function(it2){
+                    if(it1.tracks === it2){
+                        auxAtiv.push(it1);
+                    }
                 })
-            } else {
-                var favoritos = JSON.parse(localStorage.getItem("favoritos"));
-                favoritos.map(function(it1){
-                    aux.map(function(it2){
-                        if(it1.tracks === it2){
-                            auxAtiv.push(it1);
-                        }
-                    })
-                })
-            }
-
-            this.setState({atividades : auxAtiv});
-        } 
+            })
+            return auxAtiv;
+        } else {
+            return tmpAtiv;
+        }
     }
 
     limparFiltro(evento){
@@ -128,14 +112,13 @@ class AtividadesList extends Component{
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : this.ordenaAtividades(Session), selecFav : false});
+            this.setState({atividades : this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado), selecFav : false});
         } else {
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoTodos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), selecFav : true});
+            this.setState({atividades : this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado), selecFav : true});
         }
-        this.filtrar();
     }
 
     render(){
@@ -188,7 +171,7 @@ class AtividadesList extends Component{
 
                                 
                                 <input type="button" value="Cancelar" />
-                                <input type="button" value="Salvar" onClick={this.configuraFiltro}/>
+                                <input type="submit" value="Salvar" onClick={this.configuraFiltro}/>
                                 <input type="button" value="Resetar" onClick={this.limparFiltro}/>
 
                             </form>
@@ -225,13 +208,5 @@ class AtividadesList extends Component{
         );
     }
 }
-
-const firstDate = parseISO('2018-04-01 16:00:00');
-const secondDate = parseISO('2018-04-02 16:00:00');
-
-const distance = differenceInSeconds(
-    secondDate,
-    firstDate
-);
 
 export default AtividadesList;
