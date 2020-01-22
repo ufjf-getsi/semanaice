@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Session from '../data/sessions';
+import Colors from '../data/colors';
 import AtividadesListItem from './AtividadesListItem';
 import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
@@ -124,6 +125,7 @@ class AtividadesList extends Component{
     render(){
         document.title = 'Semana do ICE - Atividades';
         var localFiltro = this.state.filtro;
+        var localRotulos = this.state.rotulos;
         return (
             <div id="list-Atividades">
                 <div className="header-Atividades">
@@ -193,13 +195,23 @@ class AtividadesList extends Component{
                             })
                         }
                         if(!existe){
-                            return (
-                                <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item}/>
-                            );
+                            for(var i=0; i<localRotulos.length; i++){
+                                if(localRotulos[i] === item.tracks) {
+                                    return (
+                                        <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
+                                    );
+                                    break;
+                                }
+                            }
                         } else {
-                            return (
-                                <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item}/>
-                            );
+                            for(var i=0; i<localRotulos.length; i++){
+                                if(localRotulos[i] === item.tracks) {
+                                    return (
+                                        <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
+                                    );
+                                    break;
+                                }
+                            }
                         }
                     }) 
                     : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}

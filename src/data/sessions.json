@@ -47,7 +47,7 @@
     "location": "L205",
     "description": "O termo Aprendizado de Máquina (do inglês Machine Learning) vem se popularizando cada vez mais nos últimos anos. Uma maneira fácil de ter o primeiro contato com essa área é através do Scikit Learn, uma biblioteca código aberto de Aprendizado de Máquina para a linguagem Python. Este minicurso fará uma introdução teórica ao Machine Learning e abordará na prática alguns algoritmos disponibilizados pela biblioteca citada.",
     "speakerIds": 4,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Arquitetura"
   },
   {
     "id": 6,
@@ -67,7 +67,7 @@
     "location": "S209",
     "description": "Jogos analógicos são muitas vezes negligênciados pelos estudantes de computação interessados em criar jogos. Porém os conhecimentos de computação podem fazer toda diferença no desenvolvimento de um jogo analógico.  Vamos ampliar a visão de como podemos trabalhar com jogos, mostrar novas possibilidades de como trabalhar nesse mercado tão desejado.",
     "speakerIds": 6,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Quimica"
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "location": "L107",
     "description": "LaTeX é um conjunto de macros para o software de diagramação de textos TeX. Muito utilizado na produção de textos técnicos e científicos, o LaTeX é um software livre indicado para quem deseja elevar a qualidade e produtividade no desenvolvimento de artigos e apresentações. Com o objetivo de ensinar não só aos estudantes da Ciência da Computação, mas também qualquer pessoa interessada em aprender a utilizar o LaTeX, esse minicurso abordará como começar a escrever artigos e apresentações em TeX, passando por alguns ambientes muito utilizados, como: listas, tabelas, equações e figura.",
     "speakerIds": 7,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Física"
   },
   {
     "id": 9,
@@ -97,7 +97,7 @@
     "location": "L205",
     "description": "A proposta do minicurso é lhe guiar a desenvolver aplicações com interface dinâmica utilizando uma ferramenta poderosa empregada em grandes empresas como Facebook, Instagram e Mercado Livre. Esse minicurso irá introduzir métodos, fundamentos e bibliotecas para construção de aplicações incríveis em ReactJS.",
     "speakerIds": 9,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Matematica"
   },
   {
     "id": 11,
@@ -117,7 +117,7 @@
     "location": "L205",
     "description": "",
     "speakerIds": 11,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Estatística"
   },
   {
     "id": 13,
@@ -127,7 +127,7 @@
     "location": "S209",
     "description": "Com o tempo, a educação foi aderindo o uso da computação de maneira abrangente. O acesso a materiais educacionais foi de um passado com livros monocromáticos, a uma atualidade com uso de multimídias, chegando a repositórios com materiais disponíveis ao aluno todo o tempo. A palestra aborda diferentes aplicações da infomática na educação, tanto como ferramenta para alunos, como ferramenta para gestores, suas influências e as possibilidades da exploração da computação em novas maneiras de ensino.",
     "speakerIds": 12,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Quimica"
   },
   {
     "id": 14,
@@ -147,7 +147,7 @@
     "location": "S210",
     "description": "A palestra abordará sobre o cenário econômico atual e suas tendências no país, avaliando seus impactos para o empreendedorismo.",
     "speakerIds": 14,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Estatística"
   },
   {
     "id": 16,
@@ -197,7 +197,7 @@
     "location": "L205",
     "description": "Maratona de Programação como treinamento para competições utilizando juiz online",
     "speakerIds": 19,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Estatística"
   },
   {
     "id": 21,
@@ -207,7 +207,7 @@
     "location": "S209",
     "description": "O trabalho remoto vem ganhando cada vez mais adeptos no Brasil e, as empresas têm aumentado o número de profissionais contratados nessa modalidade. Entretanto, nem todos estão preparados ou têm conhecimento suficiente para essa forma de trabalho. Nesse sentido, experiências e processos no dia a dia do trabalho remoto serão apresentados, a fim de fomentar e criar reflexões sobre essa tendência no mercado de trabalho.",
     "speakerIds": 20,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Física"
   },
   {
     "id": 22,
@@ -227,7 +227,7 @@
     "location": "S209",
     "description": "A Metodologia Ágil vem sendo cada vez mais utilizada por empresas de desenvolvimento de software, desde que se consolidou por meio da criação do “Manifesto Ágil”. Porém, na busca de atingir uma alta performance, as organizações acabam por esquecer os princípios básicos da metodologia e que sua adoção é mais do que simplesmente seguir uma cartilha ou um conjunto de normas. É necessário que a empresa e sua equipe se transformem! \nA palestra tem o intuito de compartilhar um pouco sobre o processo de transformação ágil em uma multinacional, os principais desafios e lições aprendidas nesse processo.",
     "speakerIds": 22,
-    "tracks": "Semana da Computação"
+    "tracks": "Semana da Física"
   },
   {
     "id": 24,
@@ -247,7 +247,7 @@
     "location": "S210",
     "description": "Arquitetura SaaS e sua influência na escalabilidade do modelo de negócio das maiores empresas - da iClips à Netflix",
     "speakerIds": 24,
-    "tracks": "Semana do ICE"
+    "tracks": "Semana da Física"
   },
   {
     "id": 26,
