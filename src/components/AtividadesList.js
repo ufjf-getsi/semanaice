@@ -60,7 +60,11 @@ class AtividadesList extends Component{
             }
         })
         if(aux.length < this.state.rotulos.length){
-            this.setState({atividades : this.filtrar(this.state.atividades, aux, true), filtrado : true, filtro : aux});
+            if(this.state.selecFav){
+                this.setState({atividades : this.filtrar(JSON.parse(localStorage.getItem("favoritos")), aux, true), filtrado : true, filtro : aux});
+            } else {
+                this.setState({atividades : this.filtrar(Session, aux, true), filtrado : true, filtro : aux});
+            }
         } else {
             this.setState({filtrado : false, filtro : []});
             this.limparFiltro();
