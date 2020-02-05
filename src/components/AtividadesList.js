@@ -6,12 +6,13 @@ import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
 import Popup from "reactjs-popup";
 import { parseISO, format, formatRelative, formatDistance, differenceInSeconds } from 'date-fns';
+import PopupFiltro from '../components/PopupFiltro';
 
 class AtividadesList extends Component{
 
     constructor(){
         super();
-        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : []};
+        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : [], popupFiltro : false};
     
         this.configuraFiltro = this.configuraFiltro.bind(this);
         this.selecionaTipo = this.selecionaTipo.bind(this);
@@ -51,7 +52,7 @@ class AtividadesList extends Component{
     }
 
     configuraFiltro(evento){
-        evento.preventDefault();
+        //evento.preventDefault();
         
         var aux = [];
         this.state.rotulos.map(function(rotulo){
@@ -100,7 +101,7 @@ class AtividadesList extends Component{
         }
     }
 
-    limparFiltro(evento){
+    limparFiltro(){
         this.setState({filtrado : false, filtro : []});
         if(!this.state.selecFav){
             this.setState({atividades : Session});
@@ -108,7 +109,9 @@ class AtividadesList extends Component{
             this.setState({atividades : JSON.parse(localStorage.getItem("favoritos"))});
         }
         this.state.rotulos.map(function(rotulo){
-            document.getElementById(rotulo).checked = true;
+            if(document.getElementById(rotulo)){
+                document.getElementById(rotulo).checked = true;
+            }
         })
     }
 
@@ -130,6 +133,10 @@ class AtividadesList extends Component{
         document.title = 'Semana do ICE - Atividades';
         var localFiltro = this.state.filtro;
         var localRotulos = this.state.rotulos;
+        let closePupupFiltro =() => this.setState({popupFiltro : false});
+        let save =() => this.configuraFiltro();
+        let reset =() => this.limparFiltro();
+
         return (
             <div id="list-Atividades">
                 <div className="header-Atividades">
@@ -138,7 +145,56 @@ class AtividadesList extends Component{
                         <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo}>TODOS</li>
                         <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo}>FAVORITOS</li>
                     </ul>
-                    <Popup trigger={<button id="btFiltro" ></button>} position="bottom right" on="click">
+                    <button id="btFiltro" onClick={()=> this.setState({popupFiltro : true})} />
+                    <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} reset={reset} save={save} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
+                </div>
+
+                <div className="content-Atividades">
+                    {this.state.atividades.length > 0 ? 
+                    this.state.atividades.map(function(item){
+                        var favoritos = JSON.parse(localStorage.getItem("favoritos"));
+                        var existe = false;
+                        if(favoritos != null) {
+                            favoritos.map(function(fav){
+                                if(item.id === fav.id){
+                                    existe = true;
+                                }
+                                return(null);
+                            })
+                        }
+                        if(!existe){
+                            for(var i=0; i<localRotulos.length; i++){
+                                if(localRotulos[i] === item.tracks) {
+                                    return (
+                                        <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
+                                    );
+                                    break;
+                                }
+                            }
+                        } else {
+                            for(var i=0; i<localRotulos.length; i++){
+                                if(localRotulos[i] === item.tracks) {
+                                    return (
+                                        <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
+                                    );
+                                    break;
+                                }
+                            }
+                        }
+                    }) 
+                    : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
+                </div>
+                
+            </div>
+        );
+    }
+}
+
+export default AtividadesList;
+
+
+/**
+ * <Popup trigger={<button id="btFiltro" ></button>} position="bottom right" on="click">
                         <div className="popup-Atividades">
                             <h3>Filtro</h3>
                             <form action="#">
@@ -183,46 +239,4 @@ class AtividadesList extends Component{
                             </form>
                         </div>
                     </Popup>
-                </div>
-
-                <div className="content-Atividades">
-                    {this.state.atividades.length > 0 ? 
-                    this.state.atividades.map(function(item){
-                        var favoritos = JSON.parse(localStorage.getItem("favoritos"));
-                        var existe = false;
-                        if(favoritos != null) {
-                            favoritos.map(function(fav){
-                                if(item.id === fav.id){
-                                    existe = true;
-                                }
-                                return(null);
-                            })
-                        }
-                        if(!existe){
-                            for(var i=0; i<localRotulos.length; i++){
-                                if(localRotulos[i] === item.tracks) {
-                                    return (
-                                        <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
-                                    );
-                                    break;
-                                }
-                            }
-                        } else {
-                            for(var i=0; i<localRotulos.length; i++){
-                                if(localRotulos[i] === item.tracks) {
-                                    return (
-                                        <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
-                                    );
-                                    break;
-                                }
-                            }
-                        }
-                    }) 
-                    : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
-                </div>
-            </div>
-        );
-    }
-}
-
-export default AtividadesList;
+ */
