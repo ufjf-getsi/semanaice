@@ -66,20 +66,35 @@
     position: relative;
     display: inline-block;
     float: right;
-    margin-right: 30px;
+    border: none;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 20px;
 }
 .filtroResetar{
     position: relative;
     display: inline-block;
     float: right;
-    margin-right: 30px;
+    border: none;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 15px;
 }
 .filtroCancelar{
     position: relative;
     display: inline-block;
     float: right;
-    margin-right: 10px;
+    border: none;
+    background-color: #8f1616;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
     margin-bottom: 10px;
+    padding: 5px 17px;
 }
 
 @media only screen and (min-width: 300px) {
@@ -88,12 +103,30 @@
         width: 300px;
         height: auto;
     }
+    .filtroSalvar{
+        margin-right: 10px;
+    }
+    .filtroResetar{
+        margin-right: 10px;
+    }
+    .filtroCancelar{
+        margin-right: 17px;
+    }
 }
 @media only screen and (min-width: 820px) {
     /* For desktop: */
     .modal{
         width: 500px;
         height: auto;
+    }
+    .filtroSalvar{
+        margin-right: 20px;
+    }
+    .filtroResetar{
+        margin-right: 20px;
+    }
+    .filtroCancelar{
+        margin-right: 15px;
     }
 }
 

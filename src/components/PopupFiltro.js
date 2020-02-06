@@ -65,7 +65,7 @@ class PopupFiltro extends Component {
                                 }
 
                                 <div className="filtroBotoes">
-                                    <input type="button" value="Cancelar" className="filtroCancelar" onClick={this.props.onHide} />
+                                    <input type="button" value="Fechar" className="filtroCancelar" onClick={this.props.onHide} />
                                     <input type="button" value="Salvar" className="filtroSalvar" onClick={this.props.save}/>
                                     <input type="button" value="Resetar" className="filtroResetar" onClick={this.props.reset}/>
                                 </div>
