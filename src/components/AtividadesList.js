@@ -45,8 +45,9 @@ class AtividadesList extends Component{
     componentDidMount(){
         PubSub.subscribe('atualizaFavoritos', function(topico, novaLista){
             if(this.state.selecFav){
-                this.setState({atividades : novaLista});
-                this.filtrar();
+                this.setState({atividades : this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrado)});
+                //this.filtrar();
+
             }
         }.bind(this));
     }
@@ -146,7 +147,7 @@ class AtividadesList extends Component{
                         <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo}>FAVORITOS</li>
                     </ul>
                     <button id="btFiltro" onClick={()=> this.setState({popupFiltro : true})} />
-                    <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} reset={reset} save={save} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
+                    <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} resetar={reset} salvar={save} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
                 </div>
 
                 <div className="content-Atividades">
