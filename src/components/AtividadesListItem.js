@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import '../css/AtividadesListItem.css';
-import Speakers from '../data/speakers'
+import Speakers from '../data/speakers';
 import PubSub from 'pubsub-js';
-import { parseISO, format, formatRelative, formatDistance, differenceInDays } from 'date-fns';
+import { parseISO, format, differenceInDays } from 'date-fns';
 import {ptBR} from 'date-fns/esm/locale';
+import AtividadeDetalhes from './AtividadeDetalhes';
 
 
 class AtividadesListItem extends Component{
 
     constructor(props){
         super(props);
-        this.state = {mesmoDia : null}
+        this.state = {mesmoDia : null};
     }
 
     componentWillMount(){
@@ -76,11 +77,16 @@ class AtividadesListItem extends Component{
         }
     }
 
+    selectItem(){
+        var show = {show : true, atividade : this.props.atividade};
+        PubSub.publish('showDetalhes', show);
+    }
+
 
     render(){
         if(this.state.mesmoDia){
             return (
-                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}}>
+                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}} onClick={this.selectItem.bind(this)} >
                     <p className="titulo-AtividadesItem">{this.props.nome}</p>
                     <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", {locale: ptBR})} as {format(parseISO(this.props.dataFinal), "HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
                     <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
@@ -89,7 +95,7 @@ class AtividadesListItem extends Component{
             );
         } else {
             return (
-                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}}>
+                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}} onClick={this.selectItem.bind(this)} >
                     <p className="titulo-AtividadesItem">{this.props.nome}</p>
                     <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", {locale: ptBR})} até {format(parseISO(this.props.dataFinal), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
                     <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>

@@ -4,8 +4,7 @@ import Colors from '../data/colors';
 import AtividadesListItem from './AtividadesListItem';
 import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
-import Popup from "reactjs-popup";
-import { parseISO, format, formatRelative, formatDistance, differenceInSeconds } from 'date-fns';
+import { parseISO, differenceInSeconds } from 'date-fns';
 import PopupFiltro from '../components/PopupFiltro';
 
 class AtividadesList extends Component{
@@ -46,8 +45,6 @@ class AtividadesList extends Component{
         PubSub.subscribe('atualizaFavoritos', function(topico, novaLista){
             if(this.state.selecFav){
                 this.setState({atividades : this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrado)});
-                //this.filtrar();
-
             }
         }.bind(this));
     }
@@ -132,7 +129,6 @@ class AtividadesList extends Component{
 
     render(){
         document.title = 'Semana do ICE - Atividades';
-        var localFiltro = this.state.filtro;
         var localRotulos = this.state.rotulos;
         let closePupupFiltro =() => this.setState({popupFiltro : false});
         let save =() => this.configuraFiltro();
@@ -192,52 +188,3 @@ class AtividadesList extends Component{
 }
 
 export default AtividadesList;
-
-
-/**
- * <Popup trigger={<button id="btFiltro" ></button>} position="bottom right" on="click">
-                        <div className="popup-Atividades">
-                            <h3>Filtro</h3>
-                            <form action="#">
-                                {
-                                this.state.filtrado ?
-                                    
-                                    this.state.rotulos.map(function(rotulo){
-                                        var checado = false;
-                                        
-                                        localFiltro.map(function(auxFiltro){
-                                            if(rotulo === auxFiltro){
-                                                checado = true;
-                                            }
-                                        })
-                                        return(
-                                            <div key={rotulo}>
-                                                <p className="titleFilter">{rotulo}</p>
-                                                <label className="switch">
-                                                    <input type="checkbox" id={rotulo} defaultChecked={checado}/>
-                                                    <span className="slider"></span>
-                                                </label>
-                                            </div>
-                                        )
-                                    }) : this.state.rotulos.map(function(rotulo){
-                                            return(
-                                                <div key={rotulo}>
-                                                    <p className="titleFilter">{rotulo}</p>
-                                                    <label className="switch">
-                                                        <input type="checkbox" id={rotulo} defaultChecked={true}/>
-                                                        <span className="slider"></span>
-                                                    </label>
-                                                </div>
-                                            )
-                                        })
-                                }
-
-                                
-                                <input type="button" value="Cancelar" />
-                                <input type="submit" value="Salvar" onClick={this.configuraFiltro}/>
-                                <input type="button" value="Resetar" onClick={this.limparFiltro}/>
-
-                            </form>
-                        </div>
-                    </Popup>
- */

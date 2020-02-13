@@ -1,4 +1,4 @@
-.modal{
+.modal-popup{
     background-color: white;
     position: fixed;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -16,14 +16,14 @@
 
 }
 
-.modal-header{
+.header-popup{
     position: relative;
     width: 100%;
     height: auto;
     text-align: center;
     margin: 0px;
 }
-.modal-header h2{
+.header-popup h2{
     margin: 0px;
     padding: 10px;
     border-radius: 5px;
@@ -31,19 +31,19 @@
     color: white;
 }
 
-.modal-body{
+.body-popup{
     position: relative;
     width: 100%;
     padding: 5px;
 }
-.modal-body p{
+.body-popup p{
     margin-left: 30px;
     font-size: 13pt;
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px;
     margin-left: 10px;
 }
-.point {
+.point-popup {
     position: relative;
     display: inline-block;
     width: 10px;
@@ -52,7 +52,7 @@
     margin-left: 10px;
     border-radius: 5px;
 }
-.filtroBotoes{
+.filtroBotoes-popup{
     position: relative;
     display: block;
     width: 100%;
@@ -62,7 +62,7 @@
     justify-content: right;
     padding: 0px;
 }
-.filtroSalvar{
+.filtroSalvar-popup{
     position: relative;
     display: inline-block;
     float: right;
@@ -73,7 +73,7 @@
     border-radius: 5px;
     padding: 5px 20px;
 }
-.filtroResetar{
+.filtroResetar-popup{
     position: relative;
     display: inline-block;
     float: right;
@@ -84,7 +84,7 @@
     border-radius: 5px;
     padding: 5px 15px;
 }
-.filtroCancelar{
+.filtroCancelar-popup{
     position: relative;
     display: inline-block;
     float: right;
@@ -99,33 +99,33 @@
 
 @media only screen and (min-width: 300px) {
     /* For tablets: */
-    .modal{
+    .modal-popup{
         width: 300px;
         height: auto;
     }
-    .filtroSalvar{
+    .filtroSalvar-popup{
         margin-right: 10px;
     }
-    .filtroResetar{
+    .filtroResetar-popup{
         margin-right: 10px;
     }
-    .filtroCancelar{
+    .filtroCancelar-popup{
         margin-right: 17px;
     }
 }
 @media only screen and (min-width: 820px) {
     /* For desktop: */
-    .modal{
+    .modal-popup{
         width: 500px;
         height: auto;
     }
-    .filtroSalvar{
+    .filtroSalvar-popup{
         margin-right: 20px;
     }
-    .filtroResetar{
+    .filtroResetar-popup{
         margin-right: 20px;
     }
-    .filtroCancelar{
+    .filtroCancelar-popup{
         margin-right: 15px;
     }
 }
@@ -182,11 +182,11 @@
     margin-right: 0px;
     margin-left: auto;
 }
-.titleFilter{
+.titleFilter-popup{
     display: inline-block;
 }
 
-.switch {
+.switch-popup {
     position: relative;
     display: inline-block;
     width: 30px;
@@ -198,13 +198,13 @@
     margin-top: 10px;
 }
   
-  .switch input { 
+.switch-popup input { 
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider-popup {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -215,9 +215,9 @@
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 17px;
-  }
-  
-  .slider:before {
+}
+
+.slider-popup:before {
     position: absolute;
     content: "";
     height: 13px;
@@ -228,22 +228,22 @@
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked + .slider-popup {
     background-color: #8f1616;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus + .slider-popup {
     box-shadow: 0 0 1px #8f1616;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked + .slider-popup:before {
     -webkit-transform: translateX(13px);
     -ms-transform: translateX(13px);
     transform: translateX(13px);
-  }
+}
 
-  .popup-content{
+.popup-content{
     width: auto;
 }
