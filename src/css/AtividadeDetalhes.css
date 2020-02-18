@@ -27,15 +27,44 @@
     display: inline-block;
     color: white;
     margin: 10px 20px;
-    font-size: 13pt;
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 .body-datalhes {
     position: relative;
     display: block;
-    padding: 20px;
+    /*padding: 20px;*/
     width: 100%;
     height: auto;
+}
+.body-datalhes p{
+    margin: 5px 0px;
+}
+.titulo-detalhes{
+    color: black;
+    padding: 0px 20px;
+}
+.datatitulo-detalhes, .localtitulo-detalhes, .palestrantetitulo-detalhes, .descricaotitulo-detalhes{
+    display: inline-block;
+    font-weight: bold;
+    color: black;
+    font-size: 13pt;
+    padding-left: 20px;
+}
+.data-detalhes, .local-detalhes, .palestrante-detalhes, .descricao-detalhes{
+    display: inline-block;
+    font-size: 13pt;
+    padding-right: 20px;
+    margin: 0px;
+}
+
+.descricaotitulo-detalhes{
+    padding-left: 0px;
+}
+.descricao-detalhes{
+    padding-left: 20px;
+    text-align: justify;
 }
 
 @media only screen and (min-width: 768px) {

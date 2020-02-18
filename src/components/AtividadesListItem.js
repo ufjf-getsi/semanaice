@@ -86,9 +86,11 @@ class AtividadesListItem extends Component{
     render(){
         if(this.state.mesmoDia){
             return (
-                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}} onClick={this.selectItem.bind(this)} >
-                    <p className="titulo-AtividadesItem">{this.props.nome}</p>
-                    <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", {locale: ptBR})} as {format(parseISO(this.props.dataFinal), "HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}} >
+                    <div onClick={this.selectItem.bind(this)} >
+                        <p className="titulo-AtividadesItem">{this.props.nome}</p>
+                        <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", {locale: ptBR})} as {format(parseISO(this.props.dataFinal), "HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                    </div>
                     <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
                     
                 </div>
@@ -96,8 +98,10 @@ class AtividadesListItem extends Component{
         } else {
             return (
                 <div id="item-AtividadesItem" style={{borderLeftColor: this.props.color.hexadecimal}} onClick={this.selectItem.bind(this)} >
-                    <p className="titulo-AtividadesItem">{this.props.nome}</p>
-                    <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", {locale: ptBR})} até {format(parseISO(this.props.dataFinal), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                    <div onClick={this.selectItem.bind(this)} >
+                        <p className="titulo-AtividadesItem">{this.props.nome}</p>
+                        <p className="horarioLocal-AtividadesItem">{format(parseISO(this.props.dataInicio), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", {locale: ptBR})} até {format(parseISO(this.props.dataFinal), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", {locale: ptBR})}, Local: {this.props.local}</p>
+                    </div>
                     <button className="favoritar-AtividadesItem" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
                     
                 </div>
