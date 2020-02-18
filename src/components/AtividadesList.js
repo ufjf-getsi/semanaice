@@ -49,6 +49,10 @@ class AtividadesList extends Component{
         }.bind(this));
     }
 
+    componentWillUnmount(){
+        PubSub.unsubscribe('atualizaFavoritos');
+    }
+
     configuraFiltro(evento){
         //evento.preventDefault();
         

@@ -15,6 +15,10 @@ class BoxAtividades extends Component{
         }.bind(this));
     }
 
+    componentWillUnmount(){
+        PubSub.unsubscribe('showDetalhes');
+    }
+
     render(){
         let closeDetalhes =() => this.setState({showDetalhes : false});
 
