@@ -70,9 +70,16 @@ ul{
 
     text-align: center;
 }
-#btFiltro{
+#headerpesquisa-Atividades{
     position: relative;
     display: block;
+    width: 100%;
+    height: 52px;
+    overflow: hidden;
+}
+#btFiltro-Atividade{
+    position: relative;
+    display: inline-block;
     background: none;
     background: url(../img/filter.png) no-repeat;
     padding: 0px;
@@ -81,4 +88,23 @@ ul{
     height: 52px;
     margin-right: 10px;
     margin-left: auto;
+    float: right;
 }
+#pesquisar-Atividade{
+    position: absolute;
+    display: inline-block;
+    top: 0px;
+    height: 42px;
+    
+    padding: 5px;
+    left: 15px;
+    right: 55px;
+    max-width: 600px;
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+}
+::-webkit-input-placeholder  { color:white; }
+input:-moz-placeholder { color:white; }
+textarea:-moz-placeholder { color:white; }

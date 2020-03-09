@@ -11,12 +11,31 @@ class AtividadesList extends Component{
 
     constructor(){
         super();
-        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : [], popupFiltro : false};
+        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : [], popupFiltro : false, pesquisa: '', pesquisando: false};
     
         this.configuraFiltro = this.configuraFiltro.bind(this);
         this.selecionaTipo = this.selecionaTipo.bind(this);
         this.limparFiltro = this.limparFiltro.bind(this);
         this.ordenaAtividades = this.ordenaAtividades.bind(this);
+        this.carregarTexto = this.carregarTexto.bind(this);
+    }
+
+    carregarTexto(event) {
+        if(!this.state.selecFav){
+            var atividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
+        } else {
+            var atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
+        }
+
+        if(event.target.value !== '') {
+            this.setState({atividades: this.pesquisa(atividades, event.target.value), pesquisa: event.target.value, pesquisando: true});
+        } else {
+            this.setState({atividades: atividades, pesquisa: '', pesquisando: false});
+        }
+    }
+
+    pesquisa(atividades, texto) {
+        return atividades.filter(nTexto => nTexto.name.toUpperCase().indexOf(texto.toUpperCase()) != -1);
     }
 
     componentWillMount(){
@@ -141,12 +160,15 @@ class AtividadesList extends Component{
         return (
             <div id="list-Atividades">
                 <div className="header-Atividades">
-                    <h1 className="title-Atividades">Atividades</h1>
+                <h1 className="title-Atividades">Atividades</h1>
                     <ul className="listaTipos-Atividades">
                         <li className="tipos-Atividades" id="tipoTodos-Atividades" onClick={this.selecionaTipo}>TODOS</li>
                         <li className="tipos-Atividades" id="tipoFavoritos-Atividades" onClick={this.selecionaTipo}>FAVORITOS</li>
                     </ul>
-                    <button id="btFiltro" onClick={()=> this.setState({popupFiltro : true})} />
+                    <div id="headerpesquisa-Atividades">
+                        <input type="text" placeholder="Pesquisar" id="pesquisar-Atividade" value={this.state.pesquisa} onChange={this.carregarTexto} />
+                        <button id="btFiltro-Atividade" onClick={()=> this.setState({popupFiltro : true})} />
+                    </div>
                     <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} resetar={reset} salvar={save} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
                 </div>
 
