@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import '../css/AtividadesListItem.css';
-import Speakers from '../data/speakers';
 import PubSub from 'pubsub-js';
 import { parseISO, format, differenceInDays } from 'date-fns';
 import {ptBR} from 'date-fns/esm/locale';
-import AtividadeDetalhes from './AtividadeDetalhes';
 
 
 class AtividadesListItem extends Component{
@@ -37,9 +35,10 @@ class AtividadesListItem extends Component{
         }
     }
 
-    favoritar(evento){    
+    favoritar(evento){  
+        var favoritos  
         if(localStorage.getItem("favoritos") != null){
-            var favoritos = JSON.parse(localStorage.getItem("favoritos"));
+            favoritos = JSON.parse(localStorage.getItem("favoritos"));
             var atual = this.props.atividade;
             var existe = false;
             favoritos.map(function(item){
@@ -60,6 +59,7 @@ class AtividadesListItem extends Component{
                     if(item.id !== atual.id){
                         novoFavoritos.push(item);
                     }
+                    return(null);
                 })
                 localStorage.setItem("favoritos", JSON.stringify(novoFavoritos));
                 PubSub.publish('atualizaFavoritos', novoFavoritos);
@@ -68,7 +68,7 @@ class AtividadesListItem extends Component{
                 document.getElementById(this.props.id).style.color = "#000000";
             }
         } else {
-            var favoritos = [];
+            favoritos = [];
             favoritos.push(this.props.atividade);
             localStorage.setItem("favoritos", JSON.stringify(favoritos));
 

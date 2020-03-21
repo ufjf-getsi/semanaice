@@ -21,10 +21,11 @@ class AtividadesList extends Component{
     }
 
     carregarTexto(event) {
+        var atividades;
         if(!this.state.selecFav){
-            var atividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
+            atividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
         } else {
-            var atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
+            atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
         }
 
         if(event.target.value !== '') {
@@ -35,7 +36,7 @@ class AtividadesList extends Component{
     }
 
     pesquisa(atividades, texto) {
-        return atividades.filter(nTexto => nTexto.name.toUpperCase().indexOf(texto.toUpperCase()) != -1);
+        return atividades.filter(nTexto => nTexto.name.toUpperCase().indexOf(texto.toUpperCase()) !== -1);
     }
 
     componentWillMount(){
@@ -51,11 +52,13 @@ class AtividadesList extends Component{
                 if(atividade.tracks === rotulo){
                     existe = true;
                 }
+                return(null);
             })
             if(!existe){
                 aux.push(atividade.tracks);
                 
             }
+            return(null);
         })
         this.setState({rotulos : aux});
     }
@@ -63,7 +66,12 @@ class AtividadesList extends Component{
     componentDidMount(){
         PubSub.subscribe('atualizaFavoritos', function(topico, novaLista){
             if(this.state.selecFav){
-                this.setState({atividades : this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrado)});
+                var auxAtividades = this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrado);
+                if(this.state.pesquisando) {
+                    this.setState({atividades : this.pesquisa(auxAtividades, this.state.pesquisa)});
+                } else {
+                    this.setState({atividades : auxAtividades});
+                }
             }
         }.bind(this));
     }
@@ -80,6 +88,7 @@ class AtividadesList extends Component{
             if(document.getElementById(rotulo).checked){
                 aux.push(rotulo);
             }
+            return(null);
         })
         if(aux.length < this.state.rotulos.length){
             if(this.state.selecFav){
@@ -133,20 +142,30 @@ class AtividadesList extends Component{
             if(document.getElementById(rotulo)){
                 document.getElementById(rotulo).checked = true;
             }
+            return(null);
         })
     }
 
     selecionaTipo(evento){
+        var auxAtividades;
+        var stadoFavorito
         if(evento.target.id === "tipoTodos-Atividades"){
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado), selecFav : false});
+            auxAtividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
+            stadoFavorito = false;
         } else {
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoTodos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            this.setState({atividades : this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado), selecFav : true});
+            auxAtividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
+            stadoFavorito = true;
+        }
+        if(this.state.pesquisando) {
+            this.setState({atividades : this.pesquisa(auxAtividades, this.state.pesquisa), selecFav : stadoFavorito});
+        } else {
+            this.setState({atividades : auxAtividades, selecFav : stadoFavorito});
         }
     }
 
@@ -191,19 +210,18 @@ class AtividadesList extends Component{
                                     return (
                                         <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
                                     );
-                                    break;
                                 }
                             }
                         } else {
-                            for(var i=0; i<localRotulos.length; i++){
-                                if(localRotulos[i] === item.tracks) {
+                            for(var j=0; j<localRotulos.length; j++){
+                                if(localRotulos[j] === item.tracks) {
                                     return (
-                                        <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]}/>
+                                        <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[j]}/>
                                     );
-                                    break;
                                 }
                             }
                         }
+                        return(null);
                     }) 
                     : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
                 </div>

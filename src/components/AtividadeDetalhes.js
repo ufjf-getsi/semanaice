@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Modal} from 'react-bootstrap';
 import '../css/AtividadeDetalhes.css';
 import { parseISO, format, differenceInDays } from 'date-fns';
 import {ptBR} from 'date-fns/esm/locale';
@@ -7,10 +6,6 @@ import Speakers from '../data/speakers';
 
 
 class AtividadeDetalhes extends Component{
-
-    constructor(props){
-        super(props);
-    }
 
     componentWillMount(){
         var primeiraData = parseISO(this.props.atividade.dateTimeStart);
@@ -42,6 +37,7 @@ class AtividadeDetalhes extends Component{
                             if(palestrante.id === localAtividade.speakerIds){
                                 return(<p key={palestrante.id} className="palestrante-detalhes" > {palestrante.name}; </p>);
                             }
+                            return(null);
                         })
                     } <br/>
                     <label className="descricao-detalhes" ><p className="descricaotitulo-detalhes" >Descrição: </p> {this.props.atividade.description} </label>

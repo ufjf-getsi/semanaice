@@ -3,7 +3,6 @@ import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import PalestrantesList from './components/PalestrantesList';
-import AtividadesList from './components/AtividadesList';
 import BoxAtividades from './components/BoxAtividades';
 import Mapa from './components/Mapa';
 import Sobre from './components/Sobre';

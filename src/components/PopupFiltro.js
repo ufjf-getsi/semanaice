@@ -3,9 +3,7 @@ import {Modal} from 'react-bootstrap';
 import '../css/PopupFiltro.css';
 
 class PopupFiltro extends Component {
-    constructor(props){
-        super(props);
-    }
+    
 
     render(){
         var localFiltro = this.props.filtro;
@@ -37,6 +35,7 @@ class PopupFiltro extends Component {
                                             if(rotulo === auxFiltro){
                                                 checado = true;
                                             }
+                                            return(null);
                                         })
                                         cont++;
                                         return(
