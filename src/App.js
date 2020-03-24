@@ -3,7 +3,7 @@ import './App.css';
 import './css/pure-min.css';
 import './css/side-menu.css';
 import PalestrantesList from './components/PalestrantesList';
-import BoxAtividades from './components/BoxAtividades';
+import AtividadesList from './components/AtividadesList';
 import Mapa from './components/Mapa';
 import Sobre from './components/Sobre';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
@@ -72,8 +72,8 @@ class App extends Component {
         
           <div id="main">
             <Switch>
-              <Route path="/" exact component={BoxAtividades} />
-              <Route path="/atividades" component={BoxAtividades} />
+              <Route path="/" exact component={AtividadesList} />
+              <Route path="/atividades" component={AtividadesList} />
               <Route path="/palestrantes" component={PalestrantesList} />
               <Route path="/mapa" component={Mapa} />
               <Route path="/sobre" component={Sobre} />

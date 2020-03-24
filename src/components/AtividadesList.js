@@ -6,12 +6,13 @@ import '../css/AtividadesList.css';
 import PubSub from 'pubsub-js';
 import { parseISO, differenceInSeconds } from 'date-fns';
 import PopupFiltro from '../components/PopupFiltro';
+import AtividadeDetalhes from './AtividadeDetalhes';
 
 class AtividadesList extends Component{
 
     constructor(){
         super();
-        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : [], popupFiltro : false, pesquisa: '', pesquisando: false};
+        this.state = {atividades : this.ordenaAtividades(Session), selecFav : false, rotulos : [], filtrado : false, filtro : [], popupFiltro : false, pesquisa: '', pesquisando: false, mostarDetalhes: false, atividadeFocus: null};
     
         this.configuraFiltro = this.configuraFiltro.bind(this);
         this.selecionaTipo = this.selecionaTipo.bind(this);
@@ -73,6 +74,11 @@ class AtividadesList extends Component{
                     this.setState({atividades : auxAtividades});
                 }
             }
+        }.bind(this));
+
+
+        PubSub.subscribe('showDetalhes', function(topico, detalhes){
+            this.setState({mostarDetalhes: true, atividadeFocus: detalhes.atividade});
         }.bind(this));
     }
 
@@ -177,7 +183,10 @@ class AtividadesList extends Component{
         let reset =() => this.limparFiltro();
 
         return (
+            <>
+            <AtividadeDetalhes onHide={() => {this.setState({mostarDetalhes: false})}} show={this.state.mostarDetalhes} atividade={this.state.atividadeFocus} />
             <div id="list-Atividades">
+                
                 <div className="header-Atividades">
                 <h1 className="title-Atividades">Atividades</h1>
                     <ul className="listaTipos-Atividades">
@@ -227,6 +236,7 @@ class AtividadesList extends Component{
                 </div>
                 
             </div>
+            </>
         );
     }
 }
