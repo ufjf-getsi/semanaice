@@ -32,6 +32,8 @@ class AtividadeDetalhes extends Component{
                     isOpen={this.props.show} 
                     onRequestClose={this.props.onHide} 
                     className="modalDetalhes"
+                    shouldCloseOnEsc={true}
+                    style={{overlay: {backgroundColor: 'rgba(0,0,0,0.5)'}}}
                     >
                 <div className="corpo-detalhes">
                     <div className="header-detalhes">

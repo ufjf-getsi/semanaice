@@ -3,6 +3,38 @@ import {Modal} from 'react-bootstrap';
 import '../css/PopupFiltro.css';
 
 class PopupFiltro extends Component {
+    constructor() {
+        super();
+
+        this.limparFiltro = this.limparFiltro.bind(this);
+        this.salvar = this.salvar.bind(this);
+    }
+
+    limparFiltro() {
+        this.props.resetar();
+        this.props.rotulos.map(function(rotulo){
+            if(document.getElementById(rotulo)){
+                document.getElementById(rotulo).checked = true;
+            }
+            return(null);
+        })
+    }
+
+    salvar() {
+        var aux = [];
+        this.props.rotulos.map(function(rotulo){
+            if(document.getElementById(rotulo).checked){
+                aux.push(rotulo);
+            }
+            return(null);
+        })
+
+        if(aux.length < this.props.rotulos.length) {
+            this.props.salvar(aux);
+        } else {
+            this.props.resetar();
+        }
+    }
     
 
     render(){
@@ -65,8 +97,8 @@ class PopupFiltro extends Component {
 
                                 <div className="filtroBotoes-popup">
                                     <input type="button" value="Fechar" className="filtroCancelar-popup" onClick={this.props.onHide} />
-                                    <input type="button" value="Salvar" className="filtroSalvar-popup" onClick={this.props.salvar}/>
-                                    <input type="button" value="Resetar" className="filtroResetar-popup" onClick={this.props.resetar}/>
+                                    <input type="button" value="Salvar" className="filtroSalvar-popup" onClick={this.salvar}/>
+                                    <input type="button" value="Resetar" className="filtroResetar-popup" onClick={this.limparFiltro}/>
                                 </div>
                             </form>
                         </Modal.Body>

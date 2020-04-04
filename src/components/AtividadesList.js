@@ -86,25 +86,13 @@ class AtividadesList extends Component{
         PubSub.unsubscribe('atualizaFavoritos');
     }
 
-    configuraFiltro(evento){
+    configuraFiltro(aux){
         //evento.preventDefault();
         
-        var aux = [];
-        this.state.rotulos.map(function(rotulo){
-            if(document.getElementById(rotulo).checked){
-                aux.push(rotulo);
-            }
-            return(null);
-        })
-        if(aux.length < this.state.rotulos.length){
-            if(this.state.selecFav){
-                this.setState({atividades : this.filtrar(JSON.parse(localStorage.getItem("favoritos")), aux, true), filtrado : true, filtro : aux});
-            } else {
-                this.setState({atividades : this.filtrar(Session, aux, true), filtrado : true, filtro : aux});
-            }
+        if(this.state.selecFav){
+            this.setState({atividades : this.filtrar(JSON.parse(localStorage.getItem("favoritos")), aux, true), filtrado : true, filtro : aux});
         } else {
-            this.setState({filtrado : false, filtro : []});
-            this.limparFiltro();
+            this.setState({atividades : this.filtrar(Session, aux, true), filtrado : true, filtro : aux});
         }
     }
 
@@ -124,13 +112,14 @@ class AtividadesList extends Component{
         if(filtrado){
             var auxAtiv = [];
 
-            tmpAtiv.map(function(it1){
-                filtro.map(function(it2){
-                    if(it1.tracks === it2){
-                        auxAtiv.push(it1);
+            for(var i=0; i<tmpAtiv.length; i++) {
+                for(var j=0; j<filtro.length; j++) {
+                    if(tmpAtiv[i].tracks === filtro[j]) {
+                        auxAtiv.push(tmpAtiv[i]);
                     }
-                })
-            })
+                }
+            }
+            
             return auxAtiv;
         } else {
             return tmpAtiv;
@@ -138,18 +127,11 @@ class AtividadesList extends Component{
     }
 
     limparFiltro(){
-        this.setState({filtrado : false, filtro : []});
         if(!this.state.selecFav){
-            this.setState({atividades : Session});
+            this.setState({atividades : Session, filtrado : false, filtro : []});
         } else {
-            this.setState({atividades : JSON.parse(localStorage.getItem("favoritos"))});
+            this.setState({atividades : JSON.parse(localStorage.getItem("favoritos")), filtrado : false, filtro : []});
         }
-        this.state.rotulos.map(function(rotulo){
-            if(document.getElementById(rotulo)){
-                document.getElementById(rotulo).checked = true;
-            }
-            return(null);
-        })
     }
 
     selecionaTipo(evento){
@@ -197,7 +179,7 @@ class AtividadesList extends Component{
                         <input type="text" placeholder="Pesquisar" id="pesquisar-Atividade" value={this.state.pesquisa} onChange={this.carregarTexto} />
                         <button id="btFiltro-Atividade" onClick={()=> this.setState({popupFiltro : true})} />
                     </div>
-                    <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} resetar={reset} salvar={save} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
+                    <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} resetar={() => this.limparFiltro()} salvar={(aux) => this.configuraFiltro(aux)} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
                 </div>
 
                 <div className="content-Atividades">
