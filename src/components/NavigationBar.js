@@ -10,6 +10,18 @@ class NavigationBar extends Component {
         x.addListener(this.closeNavigation);
     }
 
+    componentDidMount() {
+        if(window.location.pathname === '/atividades' || window.location.pathname === '/') {
+            document.getElementById("itemAtividades").style.background = "#d61f1f";
+        } else if(window.location.pathname === '/palestrantes') {
+            document.getElementById("itemPalestrantes").style.background = "#d61f1f";
+        } else if(window.location.pathname === '/mapa') {
+            document.getElementById("itemMapa").style.background = "#d61f1f";
+        } else if(window.location.pathname === '/sobre') {
+            document.getElementById("itemSobre").style.background = "#d61f1f";
+        }
+    }
+
     //Método para fechar a NavigationBar
     closeNavigation(x) {
         if (x.matches) {
