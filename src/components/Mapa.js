@@ -6,14 +6,14 @@ class Mapa extends Component {
 
     render() {
         document.title = 'Semana do ICE - Mapa';
-        return(
-            <div className="content-Mapa">
-                <div className="header-Mapa">
-                    <h1 className="title-Mapa">Mapa</h1>
+        return (
+            <div id="content-Mapa">
+                <div id="header">
+                    <h1 id="title">Mapa</h1>
                 </div>
 
-                <div className="map-Mapa">
-                    <MapContainer/>
+                <div id="map">
+                    <MapContainer />
                 </div>
             </div>
         );

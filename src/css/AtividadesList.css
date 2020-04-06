@@ -1,18 +1,18 @@
-.header-Atividades {
+#content-Atividades #header {
     display: block;
     height: auto;
     width: 100%;
     margin: 0;
     background: #8f1616;
     padding: 0%;
-    
     padding-top: 2.5em;
     padding-right: 0;
     padding-bottom: 0px;
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header-Atividades h1 {
+
+#content-Atividades #header h1 {
     text-align: center;
     margin: 0.2em 0;
     font-size: 3em;
@@ -22,36 +22,32 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.header-Atividades h2 {
-   font-weight: 300;
-   color: #ccc;
-   padding: 0;
-   margin-top: 0;
-}
-.content-Atividades {
-    width: 100%;
-    margin-bottom: 50px;
-    line-height: 1.6em;
-}
-.content-Atividades-subhead {
-    margin: 50px 0 20px 0;
+
+#content-Atividades #header h2 {
     font-weight: 300;
-    color: #888;
+    color: #ccc;
+    padding: 0;
+    margin-top: 0;
 }
-ul{
-    padding-inline-start: 0px;
-}
-.title-Atividades{
+
+#content-Atividades #header #title {
     color: white;
     width: 100%;
 }
-.listaTipos-Atividades{
+
+#content-Atividades #header ul {
+    padding-inline-start: 0px;
+}
+
+#content-Atividades #header #listaTipos {
     align-self: center;
 }
-#tipoTodos-Atividades{
+
+#content-Atividades #header #listaTipos #tipoTodos-Atividades {
     border-bottom: 1px solid #ffffff;
 }
-.tipos-Atividades{
+
+#content-Atividades #header #listaTipos .tipos {
     display: inline-block;
     color: white;
     text-align: center;
@@ -59,18 +55,12 @@ ul{
     width: 50%;
     border-bottom: 1px solid #8f1616;
 }
-.tipos-Atividades:hover{
+
+#content-Atividades #header #listaTipos .tipos:hover {
     cursor: pointer;
 }
-#semAtividade{
-    position: relative;
-    display: block;
-    font-weight: bold;
-    font-size: 15pt;
 
-    text-align: center;
-}
-#headerpesquisa-Atividades{
+#content-Atividades #header #headerpesquisa {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -78,20 +68,8 @@ ul{
     height: 52px;
     margin-bottom: 5px;
 }
-#btFiltro-Atividade{
-    position: relative;
-    top: 0px;
-    background: none;
-    background: url(../img/filter.png) no-repeat;
-    padding: 0px;
-    border: none;
-    width: 52px;
-    height: 52px;
-    margin-right: 20px;
-    margin-left: auto;
-    
-}
-#pesquisar-Atividade{
+
+#content-Atividades #header #headerpesquisa #pesquisa {
     top: 0px;
     height: 42px;
     padding: 5px;
@@ -102,6 +80,61 @@ ul{
     color: white;
     font-weight: bold;
 }
-::-webkit-input-placeholder  { color:white; }
-input:-moz-placeholder { color:white; }
-textarea:-moz-placeholder { color:white; }
+
+#content-Atividades #header #headerpesquisa #btFiltro {
+    position: relative;
+    top: 0px;
+    background: none;
+    padding: 0px;
+    border: none;
+    width: 52px;
+    height: 52px;
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+#content-Atividades #header #headerpesquisa #btFiltro #imgFilter {
+    margin: 8px;
+}
+
+#content-Atividades #header ::-webkit-input-placeholder {
+    color: white;
+}
+
+#content-Atividades #header input:-moz-placeholder {
+    color: white;
+}
+
+#content-Atividades #header textarea:-moz-placeholder {
+    color: white;
+}
+
+#content-Atividades #list {
+    width: 100%;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+#content-Atividades #list-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+#content-Atividades #list #semAtividade {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    font-size: 15pt;
+    text-align: center;
+}
+
+@media (max-width: 48em) {
+    #content-Atividades #header {
+        padding-top: 0em;
+    }
+    #content-Atividades #header h1 {
+        padding-top: 15px;
+        font-size: 30pt;
+    }
+}

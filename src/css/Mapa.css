@@ -1,4 +1,4 @@
-.header-Mapa {
+#content-Mapa #header {
     display: block;
     height: auto;
     width: 100%;
@@ -12,7 +12,8 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header-Mapa h1 {
+
+#content-Mapa #header h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -21,13 +22,26 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.title-Mapa{
+
+#content-Mapa #header #title {
     color: white;
     width: 100%;
     padding-bottom: 10px;
 }
-.map-Mapa{
+
+#content-Mapa #map {
     max-width: 100%;
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 48em) {
+    #content-Mapa #header {
+        padding-top: 0em;
+    }
+    #content-Mapa #header h1 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 30pt;
+    }
 }

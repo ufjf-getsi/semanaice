@@ -1,6 +1,9 @@
+#content-Palestrantes {
+    max-width: 100%;
+    overflow: hidden;
+}
 
-
-.header-Palestrantes {
+#content-Palestrantes #header {
     display: table;
     height: auto;
     width: 100%;
@@ -14,7 +17,8 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header-Palestrantes h1 {
+
+#content-Palestrantes #header h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -23,29 +27,42 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.header-Palestrantes h2 {
-   font-weight: 300;
-   color: #ccc;
-   padding: 0;
-   margin-top: 0;
+
+#content-Palestrantes #header h2 {
+    font-weight: 300;
+    color: #ccc;
+    padding: 0;
+    margin-top: 0;
 }
-.content-Palestrantes {
+
+#content-Palestrantes #listSpeakers {
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     grid-gap: 10px;
     line-height: 1.5em;
     padding: 1%;
 }
-.content-Palestrantes-subhead {
+
+#content-Palestrantes #listSpeakers-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #888;
 }
-ul{
-    padding-inline-start: 0px;
-}
-.title-Palestrantes{
+
+#content-Palestrantes #header #title {
     color: white;
     width: 100%;
     padding-bottom: 10px;
+}
+
+@media (max-width: 48em) {
+    #content-Palestrantes #header {
+        padding-top: 0em;
+    }
+    #content-Palestrantes #header h1 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 30pt;
+    }
 }

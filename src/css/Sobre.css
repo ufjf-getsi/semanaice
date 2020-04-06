@@ -1,4 +1,4 @@
-.header-Sobre {
+#content-Sobre #header {
     display: block;
     height: auto;
     width: 100%;
@@ -12,7 +12,8 @@
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
-.header-Sobre h1 {
+
+#content-Sobre #header h1 {
     margin: 0.2em 0;
     font-size: 3em;
     font-weight: 300;
@@ -21,23 +22,38 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-.title-Sobre{
+
+#content-Sobre #header #title {
     color: white;
     width: 100%;
     padding-bottom: 10px;
 }
-.ice-Sobre{
+
+#content-Sobre #corpo {
+    display: block;
+    position: relative;
+    padding: 15px;
+}
+
+#content-Sobre #corpo #iconIce {
     display: inline-block;
     position: relative;
     width: 80%;
     height: auto;
     padding: 10px 10%;
 }
-.corpo-Sobre{
-    display: block;
-    position: relative;
-    padding: 15px;
-}
-.corpo-Sobre p{
+
+#content-Sobre #corpo p {
     text-align: justify;
+}
+
+@media (max-width: 48em) {
+    #content-Sobre #header {
+        padding-top: 0em;
+    }
+    #content-Sobre #header h1 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 30pt;
+    }
 }

@@ -3,25 +3,25 @@ import Speakers from '../data/speakers';
 import PalestrantesListItem from './PalestrantesListItem';
 import '../css/PalestrantesList.css';
 
-class PalestrantesList extends Component{
+class PalestrantesList extends Component {
 
-    constructor(){
+    constructor() {
         super();
-        this.state = {palestrantes : Speakers};
+        this.state = { palestrantes: Speakers };
     }
 
-    render(){
+    render() {
         document.title = 'Semana do ICE - Palestrantes';
         return (
-            <div id="list-Palestrantes">
-                <div className="header-Palestrantes">
-                    <h1 className="title-Palestrantes">Palestrantes</h1>
+            <div id="content-Palestrantes">
+                <div id="header">
+                    <h1 id="title">Palestrantes</h1>
                 </div>
 
-                <div className="content-Palestrantes">
-                    {this.state.palestrantes.map(function(item){
+                <div id="listSpeakers">
+                    {this.state.palestrantes.map(function (item) {
                         return (
-                            <PalestrantesListItem key={item.id} id={item.id} nome={item.name} descricao={item.about} contato={item.email} perfil={item.profilePic}/>
+                            <PalestrantesListItem key={item.id} id={item.id} nome={item.name} descricao={item.about} contato={item.email} perfil={item.profilePic} />
                         );
                     })}
                 </div>

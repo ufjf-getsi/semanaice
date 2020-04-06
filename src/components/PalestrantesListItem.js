@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import '../css/PalestrantesListItem.css';
 
-class PalestrantesListItem extends Component{
+class PalestrantesListItem extends Component {
 
-    render(){
+    render() {
         return (
-            <div id="item-PalestrantesItem" key={this.props.id}>
-                <img className="perfil-PalestrantesItem" src={this.props.perfil} alt={this.props.nome}/>
-                <p className="nome-PalestrantesItem"><label className="titles-PalestrantesItem">Nome: </label> {this.props.nome}</p>
-                <p className="descricao-PalestrantesItem"><label className="titles-PalestrantesItem">Descrição: </label> {this.props.descricao}</p>
-                <p className="contato-PalestrantesItem"><label className="titles-PalestrantesItem">Contato: </label> {this.props.contato} </p>
+            <div id="content-PalestrantesItem" key={this.props.id}>
+                <img id="perfil" src={this.props.perfil} alt={this.props.nome} />
+                <p id="nome"><label className="titles">Nome: </label> {this.props.nome}</p>
+                <p id="descricao"><label className="titles">Descrição: </label> {this.props.descricao}</p>
+                <p id="contato"><label className="titles">Contato: </label> {this.props.contato} </p>
             </div>
         );
     }

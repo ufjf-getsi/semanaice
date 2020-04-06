@@ -10,6 +10,7 @@ class NavigationBar extends Component {
         x.addListener(this.closeNavigation);
     }
 
+    //Método para fechar a NavigationBar
     closeNavigation(x) {
         if (x.matches) {
             document.getElementById("menu").style.left = '0px';
@@ -18,12 +19,12 @@ class NavigationBar extends Component {
         }
     }
 
-
-
+    //Método para abrir a NavigationBar
     openNavigation() {
         document.getElementById("menu").style.left = "150px";
     }
 
+    //Método para estilização dos itens do menu
     mudaPagina(evento) {
         document.getElementById("itemAtividades").style.background = "#191818";
         document.getElementById("itemPalestrantes").style.background = "#191818";
