@@ -10,7 +10,6 @@ class AtividadesListItem extends Component {
     constructor(props) {
         super(props);
         this.state = { mesmoDia: null };
-        console.log(this.props.atividade);
     }
 
     componentWillMount() {
