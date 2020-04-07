@@ -70,19 +70,27 @@ class AtividadesList extends Component {
         PubSub.unsubscribe('atualizaFavoritos');
     }
 
-    //Método para onChange do input pesquisar
-    carregarTexto(event) {
+    getAtividades(selecFav, filtrado, pesquisando, filtro, pesquisa) {
         var atividades;
-        if (!this.state.selecFav) {
-            atividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
+        if (selecFav) {
+            atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), filtro, filtrado);
         } else {
-            atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
+            atividades = this.filtrar(this.ordenaAtividades(Session), filtro, filtrado);
         }
 
+        if (pesquisando) {
+            atividades = this.pesquisa(atividades, pesquisa);
+        }
+
+        return atividades;
+    }
+
+    //Método para onChange do input pesquisar
+    carregarTexto(event) {
         if (event.target.value !== '') {
-            this.setState({ atividades: this.pesquisa(atividades, event.target.value), pesquisa: event.target.value, pesquisando: true });
+            this.setState({ atividades: this.getAtividades(this.state.selecFav, this.state.filtrado, true, this.state.filtro, event.target.value), pesquisa: event.target.value, pesquisando: true });
         } else {
-            this.setState({ atividades: atividades, pesquisa: '', pesquisando: false });
+            this.setState({ atividades: this.getAtividades(this.state.selecFav, this.state.filtrado, false, this.state.filtro, ''), pesquisa: '', pesquisando: false });
         }
     }
 
@@ -92,20 +100,8 @@ class AtividadesList extends Component {
     }
 
     //Metodo para o popup configurar o filtro
-    configuraFiltro(aux) {
-
-        var tmpAtiv;
-        if (this.state.selecFav) {
-            tmpAtiv = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), aux, true);
-        } else {
-            tmpAtiv = this.filtrar(this.ordenaAtividades(Session), aux, true);
-        }
-
-        if (this.state.pesquisando) {
-            this.setState({ atividades: this.pesquisa(tmpAtiv, this.state.pesquisa), filtrado: true, filtro: aux});
-        } else {
-            this.setState({ atividades: tmpAtiv, filtrado: true, filtro: aux });
-        }
+    configuraFiltro(auxFiltro) {
+        this.setState({ atividades: this.getAtividades(this.state.selecFav, true, this.state.pesquisando, auxFiltro, this.state.pesquisa), filtrado: true, filtro: auxFiltro });
     }
 
     //Método para ordanar as atividades pela data
@@ -142,42 +138,25 @@ class AtividadesList extends Component {
 
     //Método para o popup resetar o filtro
     limparFiltro() {
-        var tmpAtiv;
-        if (!this.state.selecFav) {
-            tmpAtiv = this.ordenaAtividades(Session);
-        } else {
-            tmpAtiv = this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos")));
-        }
-
-        if (this.state.pesquisando) {
-            this.setState({ atividades: this.pesquisa(tmpAtiv, this.state.pesquisa), filtrado: false, filtro: []});
-        } else {
-            this.setState({ atividades: tmpAtiv, filtrado: false, filtro: [] });
-        }
+        this.setState({ atividades: this.getAtividades(this.state.selecFav, false, this.state.pesquisando, [], this.state.pesquisa), filtrado: false, filtro: [] });
     }
 
     //Método para selecionar entre todos e favoritos
     selecionaTipo(evento) {
-        var auxAtividades;
-        var stadoFavorito
+        var estadoFavorito
         if (evento.target.id === "tipoTodos-Atividades") {
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoFavoritos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            auxAtividades = this.filtrar(this.ordenaAtividades(Session), this.state.filtro, this.state.filtrado);
-            stadoFavorito = false;
+            estadoFavorito = false;
         } else {
             document.getElementById(evento.target.id).style.borderBottom = "1px solid #ffffff";
             document.getElementById("tipoTodos-Atividades").style.borderBottom = "1px solid #8f1616";
 
-            auxAtividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), this.state.filtro, this.state.filtrado);
-            stadoFavorito = true;
+            estadoFavorito = true;
         }
-        if (this.state.pesquisando) {
-            this.setState({ atividades: this.pesquisa(auxAtividades, this.state.pesquisa), selecFav: stadoFavorito });
-        } else {
-            this.setState({ atividades: auxAtividades, selecFav: stadoFavorito });
-        }
+
+        this.setState({ atividades: this.getAtividades(estadoFavorito, this.state.filtrado, this.state.pesquisando, this.state.filtro, this.state.pesquisa), selecFav: estadoFavorito });
     }
 
     render() {
