@@ -10,11 +10,12 @@ class AtividadesListItem extends Component {
     constructor(props) {
         super(props);
         this.state = { mesmoDia: null };
+        console.log(this.props.atividade);
     }
 
     componentWillMount() {
-        var primeiraData = parseISO(this.props.dataInicio);
-        var segundaData = parseISO(this.props.dataFinal);
+        var primeiraData = parseISO(this.props.atividade.dateTimeStart);
+        var segundaData = parseISO(this.props.atividade.dateTimeEnd);
 
         var diferencaDias = differenceInDays(primeiraData, segundaData);
 
@@ -27,11 +28,11 @@ class AtividadesListItem extends Component {
 
     componentDidMount() {
         if (this.props.fav) {
-            document.getElementById(this.props.id).style.background = "#d61f1f";
-            document.getElementById(this.props.id).style.color = "#ffffff";
+            document.getElementById(this.props.atividade.id).style.background = "#d61f1f";
+            document.getElementById(this.props.atividade.id).style.color = "#ffffff";
         } else {
-            document.getElementById(this.props.id).style.background = "#ffffff";
-            document.getElementById(this.props.id).style.color = "#000000";
+            document.getElementById(this.props.atividade.id).style.background = "#ffffff";
+            document.getElementById(this.props.atividade.id).style.color = "#000000";
         }
     }
 
@@ -52,8 +53,8 @@ class AtividadesListItem extends Component {
                 favoritos.push(this.props.atividade);
                 localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
-                document.getElementById(this.props.id).style.background = "#d61f1f";
-                document.getElementById(this.props.id).style.color = "#ffffff";
+                document.getElementById(this.props.atividade.id).style.background = "#d61f1f";
+                document.getElementById(this.props.atividade.id).style.color = "#ffffff";
             } else {
                 var novoFavoritos = [];
                 favoritos.map(function (item) {
@@ -65,16 +66,16 @@ class AtividadesListItem extends Component {
                 localStorage.setItem("favoritos", JSON.stringify(novoFavoritos));
                 PubSub.publish('atualizaFavoritos', novoFavoritos);
 
-                document.getElementById(this.props.id).style.background = "#ffffff";
-                document.getElementById(this.props.id).style.color = "#000000";
+                document.getElementById(this.props.atividade.id).style.background = "#ffffff";
+                document.getElementById(this.props.atividade.id).style.color = "#000000";
             }
         } else {
             favoritos = [];
             favoritos.push(this.props.atividade);
             localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
-            document.getElementById(this.props.id).style.background = "#d61f1f";
-            document.getElementById(this.props.id).style.color = "#ffffff";
+            document.getElementById(this.props.atividade.id).style.background = "#d61f1f";
+            document.getElementById(this.props.atividade.id).style.color = "#ffffff";
         }
     }
 
@@ -90,10 +91,10 @@ class AtividadesListItem extends Component {
             return (
                 <div id="item-AtividadesItem" style={{ borderLeftColor: this.props.color.hexadecimal }} >
                     <div onClick={this.selectItem.bind(this)} >
-                        <p id="titulo">{this.props.nome}</p>
-                        <p id="horarioLocal">{format(parseISO(this.props.dataInicio), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", { locale: ptBR })} as {format(parseISO(this.props.dataFinal), "HH:mm'hs'", { locale: ptBR })}, Local: {this.props.local}</p>
+                        <p id="titulo">{this.props.atividade.name}</p>
+                        <p id="horarioLocal">{format(parseISO(this.props.atividade.dateTimeStart), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", { locale: ptBR })} as {format(parseISO(this.props.atividade.dateTimeEnd), "HH:mm'hs'", { locale: ptBR })}, Local: {this.props.atividade.location}</p>
                     </div>
-                    <button className="favoritar" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
+                    <button className="favoritar" id={this.props.atividade.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
 
                 </div>
             );
@@ -101,10 +102,10 @@ class AtividadesListItem extends Component {
             return (
                 <div id="item-AtividadesItem" style={{ borderLeftColor: this.props.color.hexadecimal }} onClick={this.selectItem.bind(this)} >
                     <div onClick={this.selectItem.bind(this)} >
-                        <p id="titulo">{this.props.nome}</p>
-                        <p id="horarioLocal">{format(parseISO(this.props.dataInicio), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", { locale: ptBR })} até {format(parseISO(this.props.dataFinal), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", { locale: ptBR })}, Local: {this.props.local}</p>
+                        <p id="titulo">{this.props.atividade.name}</p>
+                        <p id="horarioLocal">{format(parseISO(this.props.atividade.dateTimeStart), "'Do dia' dd 'de' MMMM', às ' HH:mm'hs,'", { locale: ptBR })} até {format(parseISO(this.props.atividade.dateTimeEnd), "'dia' dd 'de' MMMM', às ' HH:mm'hs'", { locale: ptBR })}, Local: {this.props.atividade.location}</p>
                     </div>
-                    <button className="favoritar" id={this.props.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
+                    <button className="favoritar" id={this.props.atividade.id} onClick={this.favoritar.bind(this)}>Favoritar </button>
 
                 </div>
             );

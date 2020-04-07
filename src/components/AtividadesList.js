@@ -34,13 +34,13 @@ class AtividadesList extends Component {
         Session.map(function (atividade) {
             var existe = false;
             aux.map(function (rotulo) {
-                if (atividade.tracks === rotulo) {
+                if (atividade.tracks[0] === rotulo) {
                     existe = true;
                 }
                 return (null);
             })
             if (!existe) {
-                aux.push(atividade.tracks);
+                aux.push(atividade.tracks[0]);
 
             }
             return (null);
@@ -124,7 +124,7 @@ class AtividadesList extends Component {
 
             for (var i = 0; i < tmpAtiv.length; i++) {
                 for (var j = 0; j < filtro.length; j++) {
-                    if (tmpAtiv[i].tracks === filtro[j]) {
+                    if (tmpAtiv[i].tracks[0] === filtro[j]) {
                         auxAtiv.push(tmpAtiv[i]);
                     }
                 }
@@ -199,17 +199,17 @@ class AtividadesList extends Component {
                                 }
                                 if (!existe) {
                                     for (var i = 0; i < localRotulos.length; i++) {
-                                        if (localRotulos[i] === item.tracks) {
+                                        if (localRotulos[i] === item.tracks[0]) {
                                             return (
-                                                <AtividadesListItem key={item.id} fav={false} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[i]} />
+                                                <AtividadesListItem key={item.id} fav={false} id={item.id} atividade={item} color={Colors[i]} />
                                             );
                                         }
                                     }
                                 } else {
                                     for (var j = 0; j < localRotulos.length; j++) {
-                                        if (localRotulos[j] === item.tracks) {
+                                        if (localRotulos[j] === item.tracks[0]) {
                                             return (
-                                                <AtividadesListItem key={item.id} fav={true} id={item.id} nome={item.name} dataInicio={item.dateTimeStart} dataFinal={item.dateTimeEnd} local={item.location} atividade={item} color={Colors[j]} />
+                                                <AtividadesListItem key={item.id} fav={true} id={item.id} atividade={item} color={Colors[j]} />
                                             );
                                         }
                                     }

@@ -24,8 +24,20 @@ class AtividadeDetalhes extends Component {
         }
     }
 
+    getPalestrantes() {
+        var palestrantesNomes = [];
+        for(var i=0; i<this.props.atividade.speakerIds.length; i++) {
+            for(var j=0; j<Speakers.length; j++) {
+                if(this.props.atividade.speakerIds[i] === Speakers[j].id) {
+                    palestrantesNomes.push({id: Speakers[j].id, name: Speakers[j].name});
+                }
+            }
+        }
+
+        return palestrantesNomes;
+    }
+
     render() {
-        var localAtividade = this.props.atividade;
         if (this.props.show) {
             return (
                 <Modal
@@ -42,16 +54,15 @@ class AtividadeDetalhes extends Component {
                         </div>
                         <div id="body">
                             <h2 id="titulo"> {this.props.atividade.name} </h2>
-                            <p className="titulos" >Data: </p> <p className="dados" > {format(parseISO(this.props.atividade.dateTimeStart), "'dia' dd 'de' MMMM', as ' HH:mm'hs;'", { locale: ptBR })} </p> <br />
-                            <p className="titulos" >Local: </p> <p className="dados" > {this.props.atividade.location};</p> <br />
+                            <p className="titulos" >Data: </p> <p className="dados" > {format(parseISO(this.props.atividade.dateTimeStart), "'dia' dd 'de' MMMM', as ' HH:mm'hs,'", { locale: ptBR })} </p> <br />
+                            <p className="titulos" >Local: </p> <p className="dados" > {this.props.atividade.location},</p> <br />
                             <p className="titulos" >Palestrante: </p> {
-                                Speakers.map(function (palestrante) {
-                                    if (palestrante.id === localAtividade.speakerIds) {
-                                        return (<p key={palestrante.id} className="dados" > {palestrante.name}; </p>);
-                                    }
-                                    return (null);
+                                this.getPalestrantes().map(function(palestrante) {
+                                    return (
+                                        <p key={palestrante.id} className="dados" >{palestrante.name},</p>
+                                    );
                                 })
-                            } <br />
+                            }
                             <label className="dados" id="descricao" ><p className="titulos" id="descricaoTitle" >Descrição: </p> {this.props.atividade.description} </label>
                         </div>
                     </div>
