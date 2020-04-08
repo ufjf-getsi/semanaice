@@ -12,12 +12,13 @@ class Mapa extends Component {
                     <h1 id="title">Mapa</h1>
                 </div>
 
-                <div id="map">
+                <div id="map" >
                     <MapContainer />
                 </div>
             </div>
         );
     }
 }
+
 
 export default Mapa;

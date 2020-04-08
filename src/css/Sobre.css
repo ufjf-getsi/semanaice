@@ -35,12 +35,19 @@
     padding: 15px;
 }
 
-#content-Sobre #corpo #iconIce {
+#content-Sobre #corpo #boxIconIce{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#content-Sobre #corpo #boxIconIce #iconIce {
     display: inline-block;
     position: relative;
     width: 80%;
     height: auto;
-    padding: 10px 10%;
+    max-width: 800px;
+    padding: 10px 0;
 }
 
 #content-Sobre #corpo p {

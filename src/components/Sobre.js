@@ -10,7 +10,9 @@ class Sobre extends Component {
                     <h1 id="title">Sobre</h1>
                 </div>
                 <div id="corpo">
-                    <img src="img/ice.jpg" id="iconIce" alt="ICE" />
+                    <div id="boxIconIce">
+                        <img src="img/ice.jpg" id="iconIce" alt="ICE" />
+                    </div>
                     <h2>Semana do ICE</h2>
                     <p>A semana do ICE acontece anualmente há mais de 20 anos na Universidade Federal de
                         Juiz de Fora (UFJF), sempre durante a Semana Nacional de Ciência e Tecnologia e

@@ -89,7 +89,7 @@ class AtividadesListItem extends Component {
         if (this.state.mesmoDia) {
             return (
                 <div id="item-AtividadesItem" style={{ borderLeftColor: this.props.color.hexadecimal }} >
-                    <div onClick={this.selectItem.bind(this)} >
+                    <div id="boxDados" onClick={this.selectItem.bind(this)} >
                         <p id="titulo">{this.props.atividade.name}</p>
                         <p id="horarioLocal">{format(parseISO(this.props.atividade.dateTimeStart), "'Dia' dd 'de' MMMM', de ' HH:mm'hs'", { locale: ptBR })} as {format(parseISO(this.props.atividade.dateTimeEnd), "HH:mm'hs'", { locale: ptBR })}, Local: {this.props.atividade.location}</p>
                     </div>

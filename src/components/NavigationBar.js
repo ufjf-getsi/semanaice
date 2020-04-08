@@ -26,14 +26,17 @@ class NavigationBar extends Component {
     closeNavigation(x) {
         if (x.matches) {
             document.getElementById("menu").style.left = '0px';
+            document.getElementById("background-NavBar").style.width = "0px";
         } else {
             document.getElementById("menu").style.left = '150px';
+            document.getElementById("background-NavBar").style.width = "150px";
         }
     }
 
     //Método para abrir a NavigationBar
     openNavigation() {
         document.getElementById("menu").style.left = "150px";
+        document.getElementById("background-NavBar").style.width = "100%";
     }
 
     //Método para estilização dos itens do menu
@@ -48,11 +51,13 @@ class NavigationBar extends Component {
 
     render() {
         return (
-            <>
+            <div >
                 <a onClick={this.openNavigation} id="menuLink" className="menu-link">
 
                     <span></span>
                 </a>
+
+                <div id="background-NavBar" onClick={() => this.closeNavigation(x)} />
 
                 <div id="menu">
                     <div className="pure-menu">
@@ -71,7 +76,7 @@ class NavigationBar extends Component {
                         </ul>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

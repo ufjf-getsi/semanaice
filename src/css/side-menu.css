@@ -2,6 +2,16 @@ body {
     color: #777;
 }
 
+#background-NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -232,5 +242,8 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #layout.active {
         position: relative;
         left: 150px;
+    }
+    #background-NavBar{
+        width: 0px;
     }
 }
