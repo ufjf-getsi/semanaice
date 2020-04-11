@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-bootstrap';
+import Modal from 'react-modal';
 import '../css/PopupFiltro.css';
+
+var x = window.matchMedia("(max-width: 48em)");
 
 class PopupFiltro extends Component {
     constructor() {
         super();
 
+        if (x.matches) {
+            this.state = {modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }};
+        } else {
+            this.state = {modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }};
+        }
+
         this.limparFiltro = this.limparFiltro.bind(this);
         this.salvar = this.salvar.bind(this);
+        this.windowManager = this.windowManager.bind(this);
+
+        x.addListener(this.windowManager);
     }
 
     //Método para resetar o filtro
@@ -38,26 +49,36 @@ class PopupFiltro extends Component {
         }
     }
 
+    windowManager(x) {
+        if (x.matches) {
+            this.setState({modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }});
+        } else {
+            this.setState({modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }});
+        }
+    }
+
 
     render() {
         var localFiltro = this.props.filtro;
         var localColors = this.props.colors;
         var cont = 0;
-        return (
-
-            <Modal className="modal-popup"
-                {...this.props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <div className="modal-popup">
-                    <Modal.Header className="header-popup">
-                        <Modal.Title id="contained-modal-title-vcenter">
-                            <h2>Filtro</h2>
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="body-popup">
+     
+        if (this.props.show) {
+            return (
+                <Modal
+                    isOpen={this.props.show}
+                    onRequestClose={this.props.onHide}
+                    className="modalDetalhes"
+                    shouldCloseOnEsc={true}
+                    style={{ overlay: this.state.modalOverlayStyles, content: this.state.modalContentStyles }}
+                >
+                    <div id="content-Filtro">
+                        <div id="header" >
+                            <p>Filtro</p>
+                        </div>
+                        
+                    </div>
+                    <div id="body">
                         <form action="#">
                             {
                                 this.props.filtrado ?
@@ -103,11 +124,12 @@ class PopupFiltro extends Component {
                                 <input type="button" value="Resetar" className="filtroResetar-popup" onClick={this.limparFiltro} />
                             </div>
                         </form>
-                    </Modal.Body>
-                </div>
-            </Modal>
-
-        );
+                    </div>
+                </Modal>
+            );
+        } else {
+            return (null);
+        }
     }
 }
 

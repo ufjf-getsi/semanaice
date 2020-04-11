@@ -5,9 +5,22 @@ import { ptBR } from 'date-fns/esm/locale';
 import Speakers from '../data/speakers';
 import Modal from 'react-modal';
 
+var x = window.matchMedia("(max-width: 48em)");
 
 Modal.setAppElement('#root');
 class AtividadeDetalhes extends Component {
+    constructor() {
+        super();
+        if (x.matches) {
+            this.state = {modalOverlayStyles: { backgroundColor: 'rgba(0,0,0,0.5)', left: 0, display: 'flex', justifyContent: 'center' }, modalContentStyles: { position: 'absolute', width: '90%', maxWidth: 1000, outline: 'none', borderRadius: 5 }};
+        } else {
+            this.state = {modalOverlayStyles: { backgroundColor: 'rgba(0,0,0,0.5)', left: 150, display: 'flex', justifyContent: 'center' }, modalContentStyles: { position: 'absolute', width: '80%', maxWidth: 1000, outline: 'none', borderRadius: 5 }};
+        }
+
+        this.windowManager = this.windowManager.bind(this);
+
+        x.addListener(this.windowManager);
+    }
 
     componentWillMount() {
         if (this.props.show) {
@@ -21,6 +34,14 @@ class AtividadeDetalhes extends Component {
             } else {
                 this.setState({ mesmoDia: false });
             }
+        }
+    }
+
+    windowManager(x) {
+        if (x.matches) {
+            this.setState({modalOverlayStyles: { backgroundColor: 'rgba(0,0,0,0.5)', left: 0, display: 'flex', justifyContent: 'center' }, modalContentStyles: { position: 'absolute', width: '90%', maxWidth: 1000, outline: 'none', borderRadius: 5 }});
+        } else {
+            this.setState({modalOverlayStyles: { backgroundColor: 'rgba(0,0,0,0.5)', left: 150, display: 'flex', justifyContent: 'center' }, modalContentStyles: { position: 'absolute', width: '80%', maxWidth: 1000, outline: 'none', borderRadius: 5 }});
         }
     }
 
@@ -45,7 +66,7 @@ class AtividadeDetalhes extends Component {
                     onRequestClose={this.props.onHide}
                     className="modalDetalhes"
                     shouldCloseOnEsc={true}
-                    style={{ overlay: { backgroundColor: 'rgba(0,0,0,0.5)' } }}
+                    style={{ overlay: this.state.modalOverlayStyles, content: this.state.modalContentStyles }}
                 >
                     <div id="content-Detalhes">
                         <div id="header">

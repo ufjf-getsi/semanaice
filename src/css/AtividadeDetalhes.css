@@ -4,6 +4,7 @@
     height: 100%;
     background: #fff;
     object-fit: cover;
+    border-radius: 5px;
     outline: none;
 }
 
@@ -13,6 +14,8 @@
     width: 100%;
     height: 41px;
     background: #8f1616;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #content-Detalhes #header #back-detalhes {
