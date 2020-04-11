@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../css/side-menu.css';
 
-var x = window.matchMedia("(max-width: 48em)");
+var janela = window.matchMedia("(max-width: 48em)");
 
 class NavigationBar extends Component {
     constructor() {
         super();
-        x.addListener(this.closeNavigation);
+        janela.addListener(this.closeNavigation);
     }
 
     componentDidMount() {
@@ -23,8 +23,8 @@ class NavigationBar extends Component {
     }
 
     //Método para fechar a NavigationBar
-    closeNavigation(x) {
-        if (x.matches) {
+    closeNavigation(janela) {
+        if (janela.matches) {
             document.getElementById("menu").style.left = '0px';
             document.getElementById("background-NavBar").style.width = "0px";
         } else {
@@ -57,12 +57,12 @@ class NavigationBar extends Component {
                     <span></span>
                 </a>
 
-                <div id="background-NavBar" onClick={() => this.closeNavigation(x)} />
+                <div id="background-NavBar" onClick={() => this.closeNavigation(janela)} />
 
                 <div id="menu">
                     <div className="pure-menu">
                         <div className="box-heading">
-                            <button id="menu-close" onClick={() => this.closeNavigation(x)}>X</button>
+                            <button id="menu-close" onClick={() => this.closeNavigation(janela)}>X</button>
                             <p className="pure-menu-heading">Menu</p>
                         </div>
 

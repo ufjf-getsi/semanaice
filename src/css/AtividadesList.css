@@ -7,7 +7,7 @@
     padding: 0%;
     padding-top: 2.5em;
     padding-right: 0;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
     padding-left: 0;
     border-bottom: 1px solid #eee;
 }
@@ -74,12 +74,15 @@
     top: 0px;
     height: 42px;
     padding: 5px;
+    padding-left: 10px;
     margin: 0 10px;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.15);
     border: 0px;
     color: white;
     font-weight: bold;
+    outline: none;
+    border-radius: 10px;
 }
 
 #content-Atividades #header #headerpesquisa #btFiltro {
@@ -92,6 +95,7 @@
     height: 52px;
     margin-right: 20px;
     margin-left: auto;
+    outline: none;
 }
 
 #content-Atividades #header #headerpesquisa #btFiltro #imgFilter {

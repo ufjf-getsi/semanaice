@@ -8,6 +8,7 @@ import { parseISO, differenceInSeconds } from 'date-fns';
 import PopupFiltro from '../components/PopupFiltro';
 import AtividadeDetalhes from './AtividadeDetalhes';
 
+
 import iconFiltro from '../img/filter.png';
 
 class AtividadesList extends Component {
@@ -22,7 +23,9 @@ class AtividadesList extends Component {
         this.limparFiltro = this.limparFiltro.bind(this);
         this.ordenaAtividades = this.ordenaAtividades.bind(this);
         this.carregarTexto = this.carregarTexto.bind(this);
-    }
+        
+        
+    };
 
     componentWillMount() {
         var fav = JSON.parse(localStorage.getItem("favoritos"));
@@ -68,6 +71,7 @@ class AtividadesList extends Component {
 
     componentWillUnmount() {
         PubSub.unsubscribe('atualizaFavoritos');
+        PubSub.unsubscribe('showDetalhes');
     }
 
     getAtividades(selecFav, filtrado, pesquisando, filtro, pesquisa) {
@@ -159,9 +163,30 @@ class AtividadesList extends Component {
         this.setState({ atividades: this.getAtividades(estadoFavorito, this.state.filtrado, this.state.pesquisando, this.state.filtro, this.state.pesquisa), selecFav: estadoFavorito });
     }
 
+    //Retorna a lista de atividades para renderizar
+    montarLista() {
+        var atividades = [];
+        for(var i=0; i<this.state.atividades.length; i++) {
+            var favoritos = JSON.parse(localStorage.getItem("favoritos"));
+            var ehFavorito = false;
+            if(favoritos !== null) {
+                for(var j=0; j<favoritos.length; j++) {
+                    if(this.state.atividades[i].id === favoritos[j].id) {
+                        ehFavorito = true;
+                    }
+                }
+            }
+            for (var k = 0; k < this.state.rotulos.length; k++) {
+                if (this.state.rotulos[k] === this.state.atividades[i].tracks[0]) {
+                        atividades.push(<AtividadesListItem key={this.state.atividades[i].id} fav={ehFavorito} atividade={this.state.atividades[i]} color={Colors[k]} />);
+                }
+            }
+        }
+        return (atividades);
+    }
+
     render() {
         document.title = 'Semana do ICE - Atividades';
-        var localRotulos = this.state.rotulos;
         let closePupupFiltro = () => this.setState({ popupFiltro: false });
 
         return (
@@ -185,38 +210,11 @@ class AtividadesList extends Component {
                     </div>
 
                     <div id="list">
-                        {this.state.atividades.length > 0 ?
-                            this.state.atividades.map(function (item) {
-                                var favoritos = JSON.parse(localStorage.getItem("favoritos"));
-                                var existe = false;
-                                if (favoritos != null) {
-                                    favoritos.map(function (fav) {
-                                        if (item.id === fav.id) {
-                                            existe = true;
-                                        }
-                                        return (null);
-                                    })
-                                }
-                                if (!existe) {
-                                    for (var i = 0; i < localRotulos.length; i++) {
-                                        if (localRotulos[i] === item.tracks[0]) {
-                                            return (
-                                                <AtividadesListItem key={item.id} fav={false} id={item.id} atividade={item} color={Colors[i]} />
-                                            );
-                                        }
-                                    }
-                                } else {
-                                    for (var j = 0; j < localRotulos.length; j++) {
-                                        if (localRotulos[j] === item.tracks[0]) {
-                                            return (
-                                                <AtividadesListItem key={item.id} fav={true} id={item.id} atividade={item} color={Colors[j]} />
-                                            );
-                                        }
-                                    }
-                                }
-                                return (null);
-                            })
-                            : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)}
+                        {
+                            this.state.atividades.length > 0 ?
+                                this.montarLista()
+                            :   (<p id="semAtividade">Nenhuma atividade encontrada!</p>)
+                        }
                     </div>
 
                 </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Speakers from '../data/speakers';
 import PalestrantesListItem from './PalestrantesListItem';
 import '../css/PalestrantesList.css';
+import { AnimatedList } from 'react-animated-list';
 
 class PalestrantesList extends Component {
 
@@ -19,11 +20,13 @@ class PalestrantesList extends Component {
                 </div>
 
                 <div id="listSpeakers">
+                    <AnimatedList animation={"grow"} initialAnimationDuration={5000} >
                     {this.state.palestrantes.map(function (item) {
                         return (
                             <PalestrantesListItem key={item.id} id={item.id} nome={item.name} descricao={item.about} contato={item.email} perfil={item.profilePic} />
                         );
                     })}
+                    </AnimatedList>
                 </div>
             </div>
         );

@@ -5,10 +5,10 @@
   "dependencies": {
     "date-fns": "^2.9.0",
     "google-maps-react": "^2.0.2",
-    "jquery": "^3.4.1",
     "material-ui": "^0.20.2",
     "pubsub-js": "^1.7.0",
     "react": "^16.12.0",
+    "react-animated-list": "^0.1.4",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.2",
