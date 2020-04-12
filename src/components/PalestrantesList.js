@@ -11,6 +11,11 @@ class PalestrantesList extends Component {
         this.state = { palestrantes: Speakers };
     }
 
+    componentDidMount() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
     render() {
         document.title = 'Semana do ICE - Palestrantes';
         return (
@@ -21,11 +26,11 @@ class PalestrantesList extends Component {
 
                 <div id="listSpeakers">
                     <AnimatedList animation={"grow"} initialAnimationDuration={5000} >
-                    {this.state.palestrantes.map(function (item) {
-                        return (
-                            <PalestrantesListItem key={item.id} id={item.id} nome={item.name} descricao={item.about} contato={item.email} perfil={item.profilePic} />
-                        );
-                    })}
+                        {this.state.palestrantes.map(function (item) {
+                            return (
+                                <PalestrantesListItem key={item.id} id={item.id} nome={item.name} descricao={item.about} contato={item.email} perfil={item.profilePic} />
+                            );
+                        })}
                     </AnimatedList>
                 </div>
             </div>

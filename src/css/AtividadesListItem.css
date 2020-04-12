@@ -13,7 +13,7 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     padding: 5px 0px;
-    animation:fadein 0.8s
+    animation: fadein 0.8s
 }
 
 #item-AtividadesItem #boxDados {
@@ -52,7 +52,11 @@
     }
 }
 
-@keyframes fadein{
-    from{opacity:0} 
-    to{opacity:1}
+@keyframes fadein {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
 }

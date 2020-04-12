@@ -8,9 +8,9 @@ export class MapContainer extends Component {
   constructor() {
     super();
     if (x.matches) {
-      this.state = {mapStyles: {width: '100%', height: window.innerHeight-78}};
+      this.state = { mapStyles: { width: '100%', height: window.innerHeight - 78 } };
     } else {
-      this.state = {mapStyles: {width: '100%', height: window.innerHeight-114}};
+      this.state = { mapStyles: { width: '100%', height: window.innerHeight - 114 } };
     }
     this.windowManager = this.windowManager.bind(this);
 
@@ -19,9 +19,9 @@ export class MapContainer extends Component {
 
   windowManager(x) {
     if (x.matches) {
-      this.setState({mapStyles: {width: '100%', height: window.innerHeight-78}});
+      this.setState({ mapStyles: { width: '100%', height: window.innerHeight - 78 } });
     } else {
-      this.setState({mapStyles: {width: '100%', height: window.innerHeight-114}});
+      this.setState({ mapStyles: { width: '100%', height: window.innerHeight - 114 } });
     }
   }
 
@@ -36,7 +36,7 @@ export class MapContainer extends Component {
           id="map-Google"
         >
           {
-            Locations.map(function(local) {
+            Locations.map(function (local) {
               return (<Marker key={local.id} position={local} />);
             })
           }

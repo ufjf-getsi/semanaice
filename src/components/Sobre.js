@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import '../css/Sobre.css';
 
 class Sobre extends Component {
+
+    componentDidMount() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
     render() {
         document.title = 'Semana do ICE - Sobre';
         return (

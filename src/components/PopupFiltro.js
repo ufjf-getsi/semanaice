@@ -9,9 +9,9 @@ class PopupFiltro extends Component {
         super();
 
         if (x.matches) {
-            this.state = {modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }};
+            this.state = { modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 } };
         } else {
-            this.state = {modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }};
+            this.state = { modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 } };
         }
 
         this.limparFiltro = this.limparFiltro.bind(this);
@@ -51,9 +51,9 @@ class PopupFiltro extends Component {
 
     windowManager(x) {
         if (x.matches) {
-            this.setState({modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }});
+            this.setState({ modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 0 }, modalContentStyles: { position: 'absolute', width: 310, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 } });
         } else {
-            this.setState({modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 }});
+            this.setState({ modalOverlayStyles: { display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)', left: 150 }, modalContentStyles: { position: 'absolute', width: 500, height: 'auto', backgroundColor: '#fff', outline: 'none', borderRadius: 5 } });
         }
     }
 
@@ -62,7 +62,7 @@ class PopupFiltro extends Component {
         var localFiltro = this.props.filtro;
         var localColors = this.props.colors;
         var cont = 0;
-     
+
         if (this.props.show) {
             return (
                 <Modal
@@ -76,7 +76,7 @@ class PopupFiltro extends Component {
                         <div id="header" >
                             <p>Filtro</p>
                         </div>
-                        
+
                     </div>
                     <div id="body">
                         <form action="#">

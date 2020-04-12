@@ -11,13 +11,13 @@ class NavigationBar extends Component {
     }
 
     componentDidMount() {
-        if(window.location.pathname === '/atividades' || window.location.pathname === '/') {
+        if (window.location.pathname === '/atividades' || window.location.pathname === '/') {
             document.getElementById("itemAtividades").style.background = "#d61f1f";
-        } else if(window.location.pathname === '/palestrantes') {
+        } else if (window.location.pathname === '/palestrantes') {
             document.getElementById("itemPalestrantes").style.background = "#d61f1f";
-        } else if(window.location.pathname === '/mapa') {
+        } else if (window.location.pathname === '/mapa') {
             document.getElementById("itemMapa").style.background = "#d61f1f";
-        } else if(window.location.pathname === '/sobre') {
+        } else if (window.location.pathname === '/sobre') {
             document.getElementById("itemSobre").style.background = "#d61f1f";
         }
     }

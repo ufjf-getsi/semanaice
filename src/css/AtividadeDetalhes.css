@@ -6,6 +6,7 @@
     object-fit: cover;
     border-radius: 5px;
     outline: none;
+    overflow: auto;
 }
 
 #content-Detalhes #header {
@@ -29,6 +30,7 @@
     height: 41px;
     margin-left: 10px;
     margin-right: auto;
+    outline: none;
 }
 
 #content-Detalhes #header p {
@@ -63,7 +65,7 @@
     font-weight: bold;
     color: black;
     font-size: 13pt;
-    padding-left: 20px;
+    padding-left: 0px;
 }
 
 #content-Detalhes #body .dados {
@@ -71,24 +73,32 @@
     font-size: 13pt;
     padding-right: 20px;
     margin: 0px;
+    text-align: justify;
+    padding-left: 20px;
+    text-align: justify;
+    overflow: hidden;
 }
 
-#content-Detalhes #body .dados + .dados {
+#content-Detalhes #body .palestrantes {
+    display: inline-block;
+    font-size: 13pt;
+    padding-right: 20px;
+    margin: 0px;
+    text-align: justify;
+}
+
+#content-Detalhes #body .palestrantes+.palestrantes {
     display: block;
     position: relative;
-    padding-left: 120px;
+    padding-left: 110px;
 }
 
-#content-Detalhes #body #descricaoTitle {
-    padding-left: 0px;
-}
-
-#content-Detalhes #body #descricao {
+/* #content-Detalhes #body #descricao {
     padding-left: 20px;
     text-align: justify;
     overflow: hidden;
     
-}
+} */
 
 @media only screen and (min-width: 0px) {
     .modalDetalhes {

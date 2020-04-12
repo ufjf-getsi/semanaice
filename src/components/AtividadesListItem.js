@@ -12,7 +12,15 @@ class AtividadesListItem extends Component {
         this.state = { mesmoDia: null };
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        if (this.props.fav) {
+            document.getElementById(this.props.atividade.id).style.background = "#d61f1f";
+            document.getElementById(this.props.atividade.id).style.color = "#ffffff";
+        } else {
+            document.getElementById(this.props.atividade.id).style.background = "#ffffff";
+            document.getElementById(this.props.atividade.id).style.color = "#000000";
+        }
+
         var primeiraData = parseISO(this.props.atividade.dateTimeStart);
         var segundaData = parseISO(this.props.atividade.dateTimeEnd);
 
@@ -22,16 +30,6 @@ class AtividadesListItem extends Component {
             this.setState({ mesmoDia: true });
         } else {
             this.setState({ mesmoDia: false });
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.fav) {
-            document.getElementById(this.props.atividade.id).style.background = "#d61f1f";
-            document.getElementById(this.props.atividade.id).style.color = "#ffffff";
-        } else {
-            document.getElementById(this.props.atividade.id).style.background = "#ffffff";
-            document.getElementById(this.props.atividade.id).style.color = "#000000";
         }
     }
 

@@ -243,7 +243,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         position: relative;
         left: 150px;
     }
-    #background-NavBar{
+    #background-NavBar {
         width: 0px;
     }
 }

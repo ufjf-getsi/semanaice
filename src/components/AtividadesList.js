@@ -15,7 +15,7 @@ class AtividadesList extends Component {
 
     constructor() {
         super();
-        this.state = { atividades: this.ordenaAtividades(Session), selecFav: false, rotulos: [], filtrado: false, filtro: [], popupFiltro: false, pesquisa: '', pesquisando: false, mostarDetalhes: false, atividadeFocus: null };
+        this.state = { atividades: this.ordenaAtividades(Session), showFav: false, rotulos: [], filtrando: false, filtro: [], showFiltro: false, pesquisa: '', pesquisando: false, showDetalhes: false, atividadeDetalhes: null };
 
         //Bind's de funções
         this.configuraFiltro = this.configuraFiltro.bind(this);
@@ -23,16 +23,16 @@ class AtividadesList extends Component {
         this.limparFiltro = this.limparFiltro.bind(this);
         this.ordenaAtividades = this.ordenaAtividades.bind(this);
         this.carregarTexto = this.carregarTexto.bind(this);
-        
-        
-    };
 
-    componentWillMount() {
+        //Adiciona array vazio para as atividades favoritas no primeiro uso
         var fav = JSON.parse(localStorage.getItem("favoritos"));
         if (fav === null) {
             localStorage.setItem("favoritos", "[]");
         }
+    };
 
+
+    componentDidMount() {
         var aux = this.state.rotulos;
         Session.map(function (atividade) {
             var existe = false;
@@ -49,12 +49,10 @@ class AtividadesList extends Component {
             return (null);
         })
         this.setState({ rotulos: aux });
-    }
 
-    componentDidMount() {
         PubSub.subscribe('atualizaFavoritos', function (topico, novaLista) {
-            if (this.state.selecFav) {
-                var auxAtividades = this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrado);
+            if (this.state.showFav) {
+                var auxAtividades = this.filtrar(this.ordenaAtividades(novaLista), this.state.filtro, this.state.filtrando);
                 if (this.state.pesquisando) {
                     this.setState({ atividades: this.pesquisa(auxAtividades, this.state.pesquisa) });
                 } else {
@@ -65,8 +63,11 @@ class AtividadesList extends Component {
 
 
         PubSub.subscribe('showDetalhes', function (topico, detalhes) {
-            this.setState({ mostarDetalhes: true, atividadeFocus: detalhes.atividade });
+            this.setState({ showDetalhes: true, atividadeDetalhes: detalhes.atividade });
         }.bind(this));
+
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 
     componentWillUnmount() {
@@ -74,12 +75,13 @@ class AtividadesList extends Component {
         PubSub.unsubscribe('showDetalhes');
     }
 
-    getAtividades(selecFav, filtrado, pesquisando, filtro, pesquisa) {
+    //Retorna a lista de Atividades de acordo com filtro, pesquisa, etc
+    getAtividades(showFav, filtrando, pesquisando, filtro, pesquisa) {
         var atividades;
-        if (selecFav) {
-            atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), filtro, filtrado);
+        if (showFav) {
+            atividades = this.filtrar(this.ordenaAtividades(JSON.parse(localStorage.getItem("favoritos"))), filtro, filtrando);
         } else {
-            atividades = this.filtrar(this.ordenaAtividades(Session), filtro, filtrado);
+            atividades = this.filtrar(this.ordenaAtividades(Session), filtro, filtrando);
         }
 
         if (pesquisando) {
@@ -92,9 +94,9 @@ class AtividadesList extends Component {
     //Método para onChange do input pesquisar
     carregarTexto(event) {
         if (event.target.value !== '') {
-            this.setState({ atividades: this.getAtividades(this.state.selecFav, this.state.filtrado, true, this.state.filtro, event.target.value), pesquisa: event.target.value, pesquisando: true });
+            this.setState({ atividades: this.getAtividades(this.state.showFav, this.state.filtrando, true, this.state.filtro, event.target.value), pesquisa: event.target.value, pesquisando: true });
         } else {
-            this.setState({ atividades: this.getAtividades(this.state.selecFav, this.state.filtrado, false, this.state.filtro, ''), pesquisa: '', pesquisando: false });
+            this.setState({ atividades: this.getAtividades(this.state.showFav, this.state.filtrando, false, this.state.filtro, ''), pesquisa: '', pesquisando: false });
         }
     }
 
@@ -105,7 +107,7 @@ class AtividadesList extends Component {
 
     //Metodo para o popup configurar o filtro
     configuraFiltro(auxFiltro) {
-        this.setState({ atividades: this.getAtividades(this.state.selecFav, true, this.state.pesquisando, auxFiltro, this.state.pesquisa), filtrado: true, filtro: auxFiltro });
+        this.setState({ atividades: this.getAtividades(this.state.showFav, true, this.state.pesquisando, auxFiltro, this.state.pesquisa), filtrando: true, filtro: auxFiltro });
     }
 
     //Método para ordanar as atividades pela data
@@ -121,9 +123,9 @@ class AtividadesList extends Component {
     }
 
     //Método que rotorna um array de atividades filtradas
-    filtrar(tmpAtiv, filtro, filtrado) {
+    filtrar(tmpAtiv, filtro, filtrando) {
 
-        if (filtrado) {
+        if (filtrando) {
             var auxAtiv = [];
 
             for (var i = 0; i < tmpAtiv.length; i++) {
@@ -142,7 +144,7 @@ class AtividadesList extends Component {
 
     //Método para o popup resetar o filtro
     limparFiltro() {
-        this.setState({ atividades: this.getAtividades(this.state.selecFav, false, this.state.pesquisando, [], this.state.pesquisa), filtrado: false, filtro: [] });
+        this.setState({ atividades: this.getAtividades(this.state.showFav, false, this.state.pesquisando, [], this.state.pesquisa), filtrando: false, filtro: [] });
     }
 
     //Método para selecionar entre todos e favoritos
@@ -160,25 +162,25 @@ class AtividadesList extends Component {
             estadoFavorito = true;
         }
 
-        this.setState({ atividades: this.getAtividades(estadoFavorito, this.state.filtrado, this.state.pesquisando, this.state.filtro, this.state.pesquisa), selecFav: estadoFavorito });
+        this.setState({ atividades: this.getAtividades(estadoFavorito, this.state.filtrando, this.state.pesquisando, this.state.filtro, this.state.pesquisa), showFav: estadoFavorito });
     }
 
     //Retorna a lista de atividades para renderizar
     montarLista() {
         var atividades = [];
-        for(var i=0; i<this.state.atividades.length; i++) {
+        for (var i = 0; i < this.state.atividades.length; i++) {
             var favoritos = JSON.parse(localStorage.getItem("favoritos"));
             var ehFavorito = false;
-            if(favoritos !== null) {
-                for(var j=0; j<favoritos.length; j++) {
-                    if(this.state.atividades[i].id === favoritos[j].id) {
+            if (favoritos !== null) {
+                for (var j = 0; j < favoritos.length; j++) {
+                    if (this.state.atividades[i].id === favoritos[j].id) {
                         ehFavorito = true;
                     }
                 }
             }
             for (var k = 0; k < this.state.rotulos.length; k++) {
                 if (this.state.rotulos[k] === this.state.atividades[i].tracks[0]) {
-                        atividades.push(<AtividadesListItem key={this.state.atividades[i].id} fav={ehFavorito} atividade={this.state.atividades[i]} color={Colors[k]} />);
+                    atividades.push(<AtividadesListItem key={this.state.atividades[i].id} fav={ehFavorito} atividade={this.state.atividades[i]} color={Colors[k]} />);
                 }
             }
         }
@@ -187,11 +189,11 @@ class AtividadesList extends Component {
 
     render() {
         document.title = 'Semana do ICE - Atividades';
-        let closePupupFiltro = () => this.setState({ popupFiltro: false });
+        let closePupupFiltro = () => this.setState({ showFiltro: false });
 
         return (
             <>
-                <AtividadeDetalhes onHide={() => { this.setState({ mostarDetalhes: false }) }} show={this.state.mostarDetalhes} atividade={this.state.atividadeFocus} />
+                <AtividadeDetalhes onHide={() => { this.setState({ showDetalhes: false }) }} show={this.state.showDetalhes} atividade={this.state.atividadeDetalhes} />
                 <div id="content-Atividades">
 
                     <div id="header">
@@ -202,18 +204,18 @@ class AtividadesList extends Component {
                         </ul>
                         <div id="headerpesquisa">
                             <input type="text" placeholder="Pesquisar" id="pesquisa" value={this.state.pesquisa} onChange={this.carregarTexto} />
-                            <button id="btFiltro" onClick={() => this.setState({ popupFiltro: true })}>
+                            <button id="btFiltro" onClick={() => this.setState({ showFiltro: true })}>
                                 <img id="imgFilter" alt="Filtro" src={iconFiltro} width="36" height="36" />
                             </button>
                         </div>
-                        <PopupFiltro show={this.state.popupFiltro} onHide={closePupupFiltro} resetar={() => this.limparFiltro()} salvar={(aux) => this.configuraFiltro(aux)} className="filtro" filtrado={this.state.filtrado ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
+                        <PopupFiltro show={this.state.showFiltro} onHide={closePupupFiltro} resetar={() => this.limparFiltro()} salvar={(aux) => this.configuraFiltro(aux)} className="filtro" filtrado={this.state.filtrando ? 1 : 0} filtro={this.state.filtro} rotulos={this.state.rotulos} colors={Colors} />
                     </div>
 
                     <div id="list">
                         {
                             this.state.atividades.length > 0 ?
                                 this.montarLista()
-                            :   (<p id="semAtividade">Nenhuma atividade encontrada!</p>)
+                                : (<p id="semAtividade">Nenhuma atividade encontrada!</p>)
                         }
                     </div>
 
